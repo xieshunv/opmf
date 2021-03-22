@@ -1,2 +1,2 @@
 # opmf
-一个项目管理框架
+A project management framework
