@@ -15,6 +15,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    protected $pmNamespace = 'App\Http\Controllers\Pm';
+    protected $applyNamespace = 'App\Http\Controllers\Apply';
 
     /**
      * The path to the "home" route for your application.
@@ -42,39 +44,38 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
+        $this->applyRoutes();
+        $this->pmRoutes();
+        $this->commonRoutes();
     }
 
     /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
+     * loading pm route file
      */
-    protected function mapWebRoutes()
+    protected function pmRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->pmNamespace)
+            ->group(base_path('routes/pm.php'));
+    }
+
+    /**
+     * loading apply route file
+     */
+    protected function applyRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->applyNamespace)
+            ->group(base_path('routes/apply.php'));
+    }
+
+    /**
+     * loading routes route file
+     */
+    protected function commonRoutes()
     {
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
-    }
-
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
-    {
-        Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+            ->group(base_path('routes/common.php'));
     }
 }
