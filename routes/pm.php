@@ -18,4 +18,6 @@ Route::middleware('web')
     ->group(function ($routes) {
         //首页
         $routes->get('/', 'HomeController@index');
+        //登陆页面
+        $routes->get('/login', 'UserController@login');
     });
