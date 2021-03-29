@@ -12,6 +12,7 @@ class UserController extends PmBaseController
 
     public function login()
     {
+        session()->put('success', '修改成功');
         return view("pm.user.login")
             ->with([
                 'option'=>[
