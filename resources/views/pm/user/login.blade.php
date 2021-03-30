@@ -3,34 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>项目管理系统 登录</title>
-    <meta name="description" content="{{$option['site_description']}}">
-    <meta name="keywords" content="{{$option['keywords']}}"/>
+    <title>登录系统</title>
+    <meta name="description" content="项目管理系统">
+    <meta name="keywords" content="项目管理系统"/>
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- Icons -->
     <link rel="shortcut icon" href="{{asset('media/favicons/favicon.png') }}">
-    <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('media/favicons/favicon-192x192.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
     <!-- Stylesheets -->
     <!-- Page JS Plugins CSS -->
-    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/dropzone/dist/min/dropzone.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css')}}">
-
     <!-- Fonts and Styles -->
-
-
     <link rel="stylesheet" id="css-main" href="{{ mix('css/dashmix.css') }}">
 
-    <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
-<!-- <link rel="stylesheet" id="css-theme" href="{{ mix('css/themes/xwork.css') }}"> -->
     <script src="{{ mix('js/dashmix.app.js') }}"></script>
     <script src="{{ asset('js/laravel.app.js') }}"></script>
 
@@ -55,7 +46,7 @@
     <main id="main-container">
         <!-- Page Content -->
         <div class="bg-image" style="background-image: url('/media/photos/login_bk.jpg');">
-            <div class="row no-gutters justify-content-center bg-primary-dark-op">
+            <div class="row justify-content-center  bg-primary-dark-op">
                 <div class="hero-static col-sm-8 col-md-6 col-xl-4 d-flex align-items-center p-2 px-sm-0">
                     <!-- Sign In Block -->
                     <div class="block block-transparent block-rounded w-100 mb-0 overflow-hidden">
@@ -66,7 +57,7 @@
                                 <a class="font-w700 font-size-h1" href="{{url('/')}}">
                                     <img src="{{url('/media/photos/logo-dark.png')}}">
                                 </a>
-                                <p class="text-uppercase font-w700  text-muted">项目管理系统</p>
+                                <p class="text-uppercase link-fx font-w700  text-muted">项目管理系统</p>
                             </div>
                             <!-- END Header -->
 
@@ -80,7 +71,7 @@
                                                 <i class="fa fa-user-circle"></i>
                                             </span>
                                         </div>
-                                        <input type="text" class="form-control required" id="username" name="username" placeholder="登录名或邮箱" value="">
+                                        <input type="text" class="form-control " id="username" name="username" placeholder="登录名或邮箱" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -90,7 +81,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </span>
                                         </div>
-                                        <input type="password" class="form-control required" id="password" name="password" placeholder="密码" value="">
+                                        <input type="password" class="form-control " id="password" name="password" placeholder="密码" value="">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -122,10 +113,4 @@
     </main>
 </div>
 </body>
-
-<script type="text/javascript">
-    $(function(){
-        $("#login").validate();
-    });
-</script>
 </html>

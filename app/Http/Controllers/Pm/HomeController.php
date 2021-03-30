@@ -12,6 +12,6 @@ class HomeController extends PmBaseController
 
     public function index()
     {
-        dd('pm/home/index');
+        return view('pm.home.index',[]);
     }
 }
