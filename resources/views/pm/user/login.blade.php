@@ -37,6 +37,7 @@
     <script src="{{asset('/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
     <script src="{{asset('/custom/init.js')}}"></script>
     <link rel="stylesheet" href="{{asset('/custom/main.css')}}">
 </head>
@@ -50,7 +51,7 @@
                 <div class="hero-static col-sm-8 col-md-6 col-xl-4 d-flex align-items-center p-2 px-sm-0">
                     <!-- Sign In Block -->
                     <div class="block block-transparent block-rounded w-100 mb-0 overflow-hidden">
-                        @include('public/pm/pm_alert_tips')
+                        @include('public/tips')
                         <div class="block-content block-content-full px-lg-5 px-xl-6 py-4 py-md-5 py-lg-6 bg-white">
                             <!-- Header -->
                             <div class="mb-2 text-center">
@@ -113,4 +114,5 @@
     </main>
 </div>
 </body>
+
 </html>

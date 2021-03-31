@@ -1,4 +1,9 @@
 $(function(){
+    //初始化基础组件
+    $(function () {
+        Dashmix.helpers(['select2', 'datepicker', 'colorpicker', 'maxlength', 'ckeditor','flatpickr']);
+    })
+
     $(".ajaxlink").click(function () {
         var url = $(this).attr('url');
         $(".tips-ok").attr('url',url);

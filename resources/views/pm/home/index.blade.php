@@ -37,149 +37,166 @@
     <script src="{{asset('/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
     <script src="{{asset('/custom/init.js')}}"></script>
     <link rel="stylesheet" href="{{asset('/custom/main.css')}}">
 </head>
 <body>
-<div id="page-container" class="enable-page-overlay side-scroll page-header-fixed main-content-narrow side-trans-enabled page-header-dark"><div id="page-overlay"></div>
+<div id="page-container" class="page-header-fixed main-content-narrow side-trans-enabled page-header-dark"><div id="page-overlay"></div>
     <!-- Header -->
     <header id="page-header">
         <!-- Header Content -->
         <div class="content-header">
-            <!-- Left Section -->
-            <div>
-                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <button type="button" class="btn btn-dual" data-toggle="layout" data-action="header_search_on">
-                    <i class="fa fa-fw fa-search"></i> <span class="ml-1 d-none d-sm-inline-block">Search</span>
-                </button>
-                <!-- END Open Search Section -->
+            <div id="horizontal-navigation-hover-normal-dark" class="d-none d-lg-block mt-2 mt-lg-0">
+                <ul class="nav-main nav-main-horizontal nav-main-hover nav-main-dark">
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{url('/')}}">
+                            <img src="{{url('/media/photos/logo.png')}}" style="height:22px;">
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <i class="nav-main-link-icon fa fa-boxes"></i>
+                            <span class="nav-main-link-name">项目管理</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">篮球季</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">星空计划</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">组织机构</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                            <i class="nav-main-link-icon fa fa-globe"></i>
+                            <span class="nav-main-link-name">项目动态</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <i class="nav-main-link-icon far fa-chart-bar"></i>
+                            <span class="nav-main-link-name">统计分析</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">篮球季统计</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">星空计划统计</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                            <i class="nav-main-link-icon fa fa-money-bill"></i>
+                            <span class="nav-main-link-name">素材管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <i class="nav-main-link-icon fa fa-wrench"></i>
+                            <span class="nav-main-link-name">系统设置</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">基础设置</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">公益品牌</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">表单管理</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">项目期管理</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">评分设置</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                            <i class="nav-main-link-icon fa fa-lock"></i>
+                            <span class="nav-main-link-name">权限管理</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">角色管理</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">权限设置</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span class="nav-main-link-name">管理员</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-            <!-- END Left Section -->
-
             <!-- Right Section -->
             <div>
                 <!-- User Dropdown -->
-                <div class="dropdown d-inline-block">
+                <div class="dropdown d-inline-block ">
                     <button type="button" class="btn btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-user d-sm-none"></i>
+                        <i class="nav-main-link-icon fa fa-user"></i>
                         <span class="d-none d-sm-inline-block">Admin</span>
                         <i class="fa fa-fw fa-angle-down ml-1 d-none d-sm-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right p-0" aria-labelledby="page-header-user-dropdown">
-                        <div class="bg-primary rounded-top font-w600 text-white text-center p-3">
-                            User Options
-                        </div>
-                        <div class="p-2">
+                        <div class="p-2 font-size-sm">
                             <a class="dropdown-item" href="be_pages_generic_profile.html">
-                                <i class="far fa-fw fa-user mr-1"></i> Profile
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
-                                <span><i class="far fa-fw fa-envelope mr-1"></i> Inbox</span>
-                                <span class="badge badge-primary badge-pill">3</span>
-                            </a>
-                            <a class="dropdown-item" href="be_pages_generic_invoice.html">
-                                <i class="far fa-fw fa-file-alt mr-1"></i> Invoices
+                                <i class="far fa-fw fa-user mr-1"></i> 个人信息
                             </a>
                             <div role="separator" class="dropdown-divider"></div>
 
                             <!-- Toggle Side Overlay -->
                             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                             <a class="dropdown-item" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-                                <i class="far fa-fw fa-building mr-1"></i> Settings
+                                <i class="far fa-fw fa-building mr-1"></i> 基础设置
                             </a>
                             <!-- END Side Overlay -->
 
                             <div role="separator" class="dropdown-divider"></div>
                             <a class="dropdown-item" href="op_auth_signin.html">
-                                <i class="far fa-fw fa-arrow-alt-circle-left mr-1"></i> Sign Out
+                                <i class="far fa-fw fa-arrow-alt-circle-left mr-1"></i> 退出系统
                             </a>
                         </div>
                     </div>
                 </div>
                 <!-- END User Dropdown -->
 
-                <!-- Notifications Dropdown -->
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-fw fa-bell"></i>
-                        <span class="badge badge-secondary badge-pill">5</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-notifications-dropdown">
-                        <div class="bg-primary rounded-top font-w600 text-white text-center p-3">
-                            Notifications
-                        </div>
-                        <ul class="nav-items my-2">
-                            <li>
-                                <a class="text-dark media py-2" href="javascript:void(0)">
-                                    <div class="mx-3">
-                                        <i class="fa fa-fw fa-check-circle text-success"></i>
-                                    </div>
-                                    <div class="media-body font-size-sm pr-2">
-                                        <div class="font-w600">App was updated to v5.6!</div>
-                                        <div class="text-muted font-italic">3 min ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-dark media py-2" href="javascript:void(0)">
-                                    <div class="mx-3">
-                                        <i class="fa fa-fw fa-user-plus text-info"></i>
-                                    </div>
-                                    <div class="media-body font-size-sm pr-2">
-                                        <div class="font-w600">New Subscriber was added! You now have 2580!</div>
-                                        <div class="text-muted font-italic">10 min ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-dark media py-2" href="javascript:void(0)">
-                                    <div class="mx-3">
-                                        <i class="fa fa-fw fa-times-circle text-danger"></i>
-                                    </div>
-                                    <div class="media-body font-size-sm pr-2">
-                                        <div class="font-w600">Server backup failed to complete!</div>
-                                        <div class="text-muted font-italic">30 min ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-dark media py-2" href="javascript:void(0)">
-                                    <div class="mx-3">
-                                        <i class="fa fa-fw fa-exclamation-circle text-warning"></i>
-                                    </div>
-                                    <div class="media-body font-size-sm pr-2">
-                                        <div class="font-w600">You are running out of space. Please consider upgrading your plan.</div>
-                                        <div class="text-muted font-italic">1 hour ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="text-dark media py-2" href="javascript:void(0)">
-                                    <div class="mx-3">
-                                        <i class="fa fa-fw fa-plus-circle text-primary"></i>
-                                    </div>
-                                    <div class="media-body font-size-sm pr-2">
-                                        <div class="font-w600">New Sale! + $30</div>
-                                        <div class="text-muted font-italic">2 hours ago</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="p-2 border-top">
-                            <a class="btn btn-light btn-block text-center" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-eye mr-1"></i> View All
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Notifications Dropdown -->
-
-                <!-- Toggle Side Overlay -->
-                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <button type="button" class="btn btn-dual" data-toggle="layout" data-action="side_overlay_toggle">
-                    <i class="far fa-fw fa-list-alt"></i>
-                </button>
-                <!-- END Toggle Side Overlay -->
             </div>
             <!-- END Right Section -->
         </div>
@@ -220,18 +237,23 @@
     </header>
     <!-- END Header -->
     <!-- Main Container -->
+    @include('public/tips')
     <main id="main-container">
         <!-- Hero -->
         <div class="bg-body-light">
             <div class="content content-full py-1">
                 <div class="d-flex flex-column flex-sm-row  align-items-sm-center">
-                    <h1 class="flex-sm-fill font-size-h4 font-w400 mt-2 mb-0 mb-sm-2">Sidebar - Mini</h1>
+                    <h1 class="flex-sm-fill font-size-sm font-w400 mt-2 mb-0 mb-sm-2">
+                        <i class="fa fa-angle-right fa-fw text-primary"></i>首页
+                    </h1>
                     <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
+                        <!--
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">Layout</li>
                             <li class="breadcrumb-item">Sidebar</li>
                             <li class="breadcrumb-item active" aria-current="page">Mini</li>
                         </ol>
+                        -->
                     </nav>
                 </div>
             </div>
@@ -253,15 +275,10 @@
 
     <!-- Footer -->
     <footer id="page-footer" class="bg-body-light">
-        <div class="content py-0">
-            <div class="row font-size-sm">
-                <div class="col-sm-6 order-sm-2 mb-1 mb-sm-0 text-center text-sm-right">
-                    Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
-                </div>
-                <div class="col-sm-6 order-sm-1 text-center text-sm-left">
-                    <a class="font-w600" href="https://1.envato.market/r6y" target="_blank">Dashmix 3.1</a> © <span data-toggle="year-copy" class="js-year-copy-enabled">2021</span>
-                </div>
-            </div>
+        <div class="content py-0 text-center font-size-sm page-footer-fixedz">
+            &copy; <span data-toggle="year-copy"></span> 由 <a class="font-w600" href="https://lingxi360.cn" target="_blank">
+                <img src="https://www.lingxi360.com/Application/Home/View/lx/styles/css/images/logo-dark.png" style="height: 12px;">
+            </a>提供技术支持
         </div>
     </footer>
     <!-- END Footer -->
