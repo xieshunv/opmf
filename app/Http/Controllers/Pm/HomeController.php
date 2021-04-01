@@ -3,7 +3,9 @@
 namespace  App\Http\Controllers\Pm;
 
 
-class HomeController extends PmBaseController
+use Illuminate\Support\Facades\DB;
+
+class HomeController extends BasePmController
 {
     public function __construct()
     {
@@ -12,7 +14,9 @@ class HomeController extends PmBaseController
 
     public function index()
     {
-        session()->put('success', '修改成功');
+        //session()->put('success', '修改成功');
+        $ret = DB::table('users')->get();
+        dd($ret);
         return view('pm.home.index',[]);
     }
 }

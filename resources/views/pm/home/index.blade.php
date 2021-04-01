@@ -55,6 +55,12 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
+                        <a class="nav-main-link"   href="{{url('/')}}">
+                            <i class="nav-main-link-icon fa fa-home"></i>
+                            <span class="nav-main-link-name">首页</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                             <i class="nav-main-link-icon fa fa-boxes"></i>
                             <span class="nav-main-link-name">项目管理</span>
@@ -84,6 +90,12 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                            <i class="nav-main-link-icon fa fa-money-bill"></i>
+                            <span class="nav-main-link-name">素材管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                             <i class="nav-main-link-icon far fa-chart-bar"></i>
                             <span class="nav-main-link-name">统计分析</span>
@@ -100,12 +112,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="javascript:void(0)">
-                            <i class="nav-main-link-icon fa fa-money-bill"></i>
-                            <span class="nav-main-link-name">素材管理</span>
-                        </a>
                     </li>
                     <li class="nav-main-item">
                         <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">

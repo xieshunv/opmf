@@ -20,4 +20,8 @@ Route::middleware('web')
         $routes->get('/', 'HomeController@index');
         //登陆页面
         $routes->get('/login', 'UserController@login');
+        $routes->post('/do_login', 'UserController@doLogin');
+        //退出系统
+        $routes->get('/logout', 'UserController@logout');
+
     });

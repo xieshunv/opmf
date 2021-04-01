@@ -37,7 +37,7 @@
     <script src="{{asset('/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+    <script src="{{asset('/plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
     <script src="{{asset('/custom/init.js')}}"></script>
     <link rel="stylesheet" href="{{asset('/custom/main.css')}}">
 </head>
@@ -64,7 +64,6 @@
 
                             <!-- Sign In Form -->
                             <form class="js-validation-signin" action="{{url('/do_login')}}" method="POST" id="login">
-
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-append">
@@ -114,5 +113,4 @@
     </main>
 </div>
 </body>
-
 </html>

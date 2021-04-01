@@ -9,8 +9,8 @@
 @if(request()->session()->get('error'))
     <script>
         $(function(){
-            var error_msg = '{{request()->session()->pull("error")}}';
-            Dashmix.helpers('notify', {delay:1,type: 'danger', icon: 'fa fa-times mr-1',align: 'center', message: error_msg});
+            var error_msg = '{!! request()->session()->pull("error") !!}';
+            Dashmix.helpers('notify', {type: 'danger', icon: 'fa fa-times mr-1',align: 'center', message: error_msg});
         });
     </script>
 @endif

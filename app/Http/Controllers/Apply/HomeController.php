@@ -3,7 +3,7 @@
 namespace  App\Http\Controllers\Apply;
 
 
-class HomeController extends ApplyBaseController
+class HomeController extends BaseApplyController
 {
     public function __construct()
     {
