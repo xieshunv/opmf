@@ -21,6 +21,7 @@ class UsersRepositories extends BaseRepositories
 {
     public function __construct()
     {
+        parent::__construct();
     }
 
     /**

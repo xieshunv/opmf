@@ -7,7 +7,7 @@ class HomeController extends BaseApplyController
 {
     public function __construct()
     {
-
+        parent::__construct();
     }
 
     public function index()

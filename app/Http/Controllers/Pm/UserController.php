@@ -28,6 +28,7 @@ class UserController extends BasePmController
 
     public function __construct(UsersRepositories $usersRep)
     {
+        parent::__construct();
         $this->usersRep = $usersRep;
     }
 

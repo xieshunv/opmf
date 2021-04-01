@@ -9,7 +9,7 @@ class HomeController extends BasePmController
 {
     public function __construct()
     {
-
+        parent::__construct();
     }
 
     public function index()
