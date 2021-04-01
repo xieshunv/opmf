@@ -12,7 +12,7 @@
  * @date:       2021-04-01 21:20
  */
 
-namespace  App\Http\Controllers\Pm;
+namespace App\Http\Controllers\Pm;
 
 use App\Repositories\UsersRepositories;
 use App\Exceptions\OpmfException;
@@ -37,7 +37,7 @@ class UserController extends BasePmController
      */
     public function login()
     {
-        return view("pm.user.login",[]);
+        return view("pm.user.login", []);
     }
 
     /**
@@ -46,9 +46,9 @@ class UserController extends BasePmController
     public function doLogin()
     {
         //接收参数
-        $param = request()->only('password','username','captcha');
+        $param = request()->only('password', 'username', 'captcha');
         //验证规则
-        $rules = ['username' => 'required','password' => 'required','captcha' => 'required'];
+        $rules = ['username' => 'required', 'password' => 'required', 'captcha' => 'required'];
         //提示信息
         $messages = [
             'username.*' => Tips::USERNAME_EMPTY,
@@ -56,7 +56,7 @@ class UserController extends BasePmController
             'captcha.*' => Tips::CAPTCHA_EMPTY
         ];
 
-        $checkRet = $this->paramValidate($param,$rules,$messages,$errorMsg);
+        $checkRet = $this->paramValidate($param, $rules, $messages, $errorMsg);
         if (false === $checkRet) {
             session()->put('error', $errorMsg);
             return redirect('/login');
@@ -72,7 +72,7 @@ class UserController extends BasePmController
         try {
             $this->usersRep->doLoginRep($param);
             return redirect('/');
-        } catch (OpmfException $e){
+        } catch (OpmfException $e) {
             $messages = $e->getMessage();
             Log::warning('[Pm UserController] doLogin warning', [
                 'messages' => $messages,

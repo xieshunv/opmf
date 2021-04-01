@@ -20,7 +20,7 @@ class Controller extends BaseController
      * @param array $messages
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function paramValidate(array $data, array $rules, array $messages,&$errorMsg)
+    public function paramValidate(array $data, array $rules, array $messages, &$errorMsg)
     {
         try {
             $validator = Validator::make($data, $rules, $messages);
@@ -28,7 +28,7 @@ class Controller extends BaseController
             return $validator;
         } catch (ValidationException $e) {
             $error = $validator->errors()->all();
-            $errorMsg = implode(' <br /> ',$error);
+            $errorMsg = implode(' <br /> ', $error);
 
             return false;
         }

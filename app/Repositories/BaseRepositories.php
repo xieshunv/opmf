@@ -11,7 +11,8 @@
  * @version：   v1.0.0
  * @date:       2021/4/1 9:56 下午
  */
-namespace  App\Repositories;
+
+namespace App\Repositories;
 
 class BaseRepositories
 {

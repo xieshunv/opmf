@@ -1,7 +1,7 @@
 <?php
 /**
  * ==============================================
- * 文件描述
+ * 
  * ----------------------------------------------
  * PHP version 7 灵析-项目管理框架
  * ==============================================
@@ -11,7 +11,8 @@
  * @version：   v1.0.0
  * @date:       2021/4/1 10:06 下午
  */
-namespace  App\Repositories;
+
+namespace App\Repositories;
 
 use App\Models\Users;
 use App\Message\Tips;

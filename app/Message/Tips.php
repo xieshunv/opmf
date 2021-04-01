@@ -11,6 +11,7 @@
  * @version：   v1.0.0
  * @date:       2021/4/1 10:34 下午
  */
+
 namespace App\Message;
 
 class Tips
