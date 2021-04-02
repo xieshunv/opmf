@@ -25,9 +25,6 @@ class HomeController extends BasePmController
 
     public function index()
     {
-        //session()->put('success', '修改成功');
-        $ret = DB::table('users')->get();
-        dd($ret);
         return view('pm.home.index', []);
     }
 }

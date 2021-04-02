@@ -14,7 +14,7 @@
 
 namespace App\Http\Controllers\Pm;
 
-use App\Repositories\UsersRepositories;
+use App\Repositories\Pm\UsersRepositories;
 use App\Exceptions\OpmfException;
 use Illuminate\Support\Facades\Log;
 use App\Message\Tips;
@@ -24,12 +24,12 @@ class UserController extends BasePmController
     /**
      * @var UsersRepositories
      */
-    public $usersRep;
+    private $usersRep;
 
-    public function __construct(UsersRepositories $usersRep)
+    public function __construct()
     {
         parent::__construct();
-        $this->usersRep = $usersRep;
+        $this->usersRep = app(UsersRepositories::class);
     }
 
     /**
@@ -37,6 +37,10 @@ class UserController extends BasePmController
      */
     public function login()
     {
+        if (login_user()) {
+            return redirect('/');
+        }
+
         return view("pm.user.login", []);
     }
 
@@ -91,6 +95,9 @@ class UserController extends BasePmController
      */
     public function logout()
     {
-
+        session()->forget('login_user');
+        //跳转到登录页
+        return redirect('/login');
     }
+
 }

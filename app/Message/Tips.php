@@ -20,4 +20,6 @@ class Tips
     const PASSWROD_EMPTY = '密码不能为空';
     const CAPTCHA_EMPTY = '验证码不能为空';
     const CAPTCHA_ERR = '验证码错误';
+    const USER_PASS_ERR = '用户名或密码错误';
+    const USER_LOGIN_INFO = '用户登录成功';
 }

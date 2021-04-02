@@ -195,7 +195,7 @@
                             <!-- END Side Overlay -->
 
                             <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="op_auth_signin.html">
+                            <a class="dropdown-item" href="{{url('/logout')}}">
                                 <i class="far fa-fw fa-arrow-alt-circle-left mr-1"></i> 退出系统
                             </a>
                         </div>

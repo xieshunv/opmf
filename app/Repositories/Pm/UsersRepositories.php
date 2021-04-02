@@ -1,7 +1,7 @@
 <?php
 /**
  * ==============================================
- *
+ * pm端 账户相关操作
  * ----------------------------------------------
  * PHP version 7 灵析-项目管理框架
  * ==============================================
@@ -12,14 +12,21 @@
  * @date:       2021/4/1 10:06 下午
  */
 
-namespace App\Repositories;
+namespace App\Repositories\Pm;
 
 use App\Models\Users;
 use App\Message\Tips;
+use Carbon\Carbon;
+use App\Repositories\BaseRepositories;
 use App\Exceptions\OpmfException;
 
 class UsersRepositories extends BaseRepositories
 {
+    /**
+     * 密码 secret
+     */
+    const SECRET_KEY = '@4!@#$%@';
+
     public function __construct()
     {
         parent::__construct();
@@ -32,7 +39,38 @@ class UsersRepositories extends BaseRepositories
      */
     public function doLoginRep(array $user)
     {
-        throw  new OpmfException('该手机已注册，请登录');
+        //用户是否存在
+        $userInfo = Users::query()
+            ->where([
+                'email' => $user['username'],
+                'password' => $this->genPassword($user['password']),
+                'is_enabled' => 'Y'
+            ])
+            ->first();
+        if (empty($userInfo)) {
+            throw  new OpmfException(Tips::USER_PASS_ERR);
+        }
+
+        //更新登录信息
+        $setInfo = [
+            'last_at' =>Carbon::now(),
+            'last_ip'=>request()->ip()
+        ];
+        Users::query()->where(['id'=>$userInfo['id']])->update($setInfo);
+        // 将信息保存到SESSION
+        session()->put('login_user',$userInfo->toArray());
+        session()->put('success',Tips::USER_LOGIN_INFO);
+
+        return true;
+    }
+
+    /**
+     * @param String $pwd
+     * @return string
+     */
+    public function genPassword(string $pwd)
+    {
+        return md5($pwd . self::SECRET_KEY);
     }
 
 }
