@@ -13,3 +13,5 @@ yarn-error.log
 .idea/opmf.iml
 .idea/php.xml
 .idea/misc.xml
+.idea/codeStyles/
+.idea/inspectionProfiles/
