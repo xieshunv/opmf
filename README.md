@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://laravel.com" target="_blank">
+    <a href="https://www.lingxi360.com/" target="_blank">
         <img src="https://www.lingxi360.com/Application/Home/View/lx/styles/css/images/logo-dark.png">
     </a>
 </p>
