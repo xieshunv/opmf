@@ -24,7 +24,8 @@ Route::middleware(['web', 'check.login'])
         //修改密码
         $routes->get('/pwd/edit', 'UserController@pwd');
         $routes->get('/pwd/save', 'HomeController@pwdSave');
-
+        //表单列表
+        $routes->get('/form', 'FormController@index');
 
     });
 

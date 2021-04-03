@@ -74,7 +74,7 @@
             </a>
         </li>
         <li class="nav-main-item">
-            <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+            <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="{{url('/form')}}">
                 <span class="nav-main-link-name">表单管理</span>
             </a>
         </li>
