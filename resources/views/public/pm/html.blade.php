@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>灵析项目管理系统</title>
-    <meta name="description" content="灵析项目管理系统">
-    <meta name="keywords" content="灵析项目管理系统"/>
-    <meta name="author" content="pixelcave">
+    <title>灵析-项目管理系统</title>
+    <meta name="description" content="灵析-项目管理系统">
+    <meta name="keywords" content="灵析-项目管理系统"/>
+    <meta name="author" content="shun.xie">
     <meta name="robots" content="noindex, nofollow">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -43,7 +43,7 @@
 </head>
 <body>
 <!-- Page Container -->
-<div id="page-container" class="page-header-fixed main-content-narrow side-trans-enabled page-header-dark">
+<div id="page-container" class="enable-page-overlay side-scroll page-header-fixed side-trans-enabled page-header-dark">
     @include('public.pm.header')
     @include('public/tips')
     @include('public/pm/modal')

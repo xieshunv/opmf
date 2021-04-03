@@ -47,7 +47,7 @@ class UserController extends BasePmController
     /**
      * 登陆验证
      */
-    public function doLogin()
+    public function sign()
     {
         //接收参数
         $param = request()->only('password', 'username', 'captcha');
@@ -91,10 +91,35 @@ class UserController extends BasePmController
     }
 
     /**
+     * 个人设置
+     */
+    public function profile()
+    {
+    }
+
+    public function profileSave()
+    {
+    }
+
+    /**
+     * 修改密码
+     */
+    public function pwd()
+    {
+
+    }
+
+    public function pwdSave()
+    {
+
+    }
+
+    /**
      * 退出系统
      */
     public function logout()
     {
+        //清除session
         session()->forget('login_user');
         //跳转到登录页
         return redirect('/login');

@@ -13,15 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('web')
+Route::middleware(['web', 'check.login'])
     ->domain(env('PM_DOMAIN'))
     ->group(function ($routes) {
         //首页
         $routes->get('/', 'HomeController@index');
-        //登陆页面
-        $routes->get('/login', 'UserController@login');
-        $routes->post('/do_login', 'UserController@doLogin');
-        //退出系统
-        $routes->get('/logout', 'UserController@logout');
+        //个人资料
+        $routes->get('/profile/edit', 'UserController@profile');
+        $routes->get('/profile/save', 'HomeController@profileSave');
+        //修改密码
+        $routes->get('/pwd/edit', 'UserController@pwd');
+        $routes->get('/pwd/save', 'HomeController@pwdSave');
+
 
     });
+
+//登陆页面
+Route::get('/login', 'UserController@login');
+Route::post('/sign', 'UserController@sign');
+//退出系统
+Route::get('/logout', 'UserController@logout');

@@ -19,5 +19,6 @@ class BasePmController extends Controller
 {
     public function __construct()
     {
+
     }
 }

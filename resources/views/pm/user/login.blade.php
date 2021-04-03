@@ -63,7 +63,7 @@
                             <!-- END Header -->
 
                             <!-- Sign In Form -->
-                            <form class="js-validation-signin" action="{{url('/do_login')}}" method="POST" id="login">
+                            <form class="js-validation-signin" action="{{url('/sign')}}" method="POST" id="login">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-append">
@@ -71,7 +71,7 @@
                                                 <i class="fa fa-user-circle"></i>
                                             </span>
                                         </div>
-                                        <input type="text" class="form-control " id="username" name="username" placeholder="登录名或邮箱" value="">
+                                        <input type="text" class="form-control " id="username" name="username" placeholder="登录名或邮箱" value="xieshun@lingxi360.com">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -81,7 +81,7 @@
                                                 <i class="fa fa-asterisk"></i>
                                             </span>
                                         </div>
-                                        <input type="password" class="form-control " id="password" name="password" placeholder="密码" value="">
+                                        <input type="password" class="form-control " id="password" name="password" placeholder="密码" value="123456">
                                     </div>
                                 </div>
                                 <div class="form-group">
