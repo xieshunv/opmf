@@ -46,44 +46,78 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-vcenter font-size-sm table-hover ">
+                    <table class="table table-vcenter js-table-sections font-size-sm table-hover ">
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">ID</th>
-                                <th class="text-left">名称</th>
-                                <th class="text-left">PID</th>
+                                <th class="text-left">表单名称</th>
                                 <th class="text-left">模块</th>
                                 <th class="text-left" style="width: 60%;">展示字段</th>
                                 <th class="text-center">操作</th>
                             </tr>
                         </thead>
-                        <tbody>
                         @if($list)
                             @foreach($list as $one)
+                                @if ($one['form_blocks'])
+                                    <tbody class="js-table-sections-header">
+                                @else
+                                    <tbody>
+                                 @endif
                                 <tr>
-                            <th class="text-center" scope="row">{{$one['id']}}</th>
-                            <td class="text-left" scope="row">
-                                <a href="{{url('form/edit?form_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="Edit">{{$one['title']}}</a>
-                            </td>
-                            <th class="text-center" scope="row">{{$one['parent_id']}}</th>
-                            <td class="text-left">
-                                <span class="badge badge-danger">{{$one['module']}}</span>
-                            </td>
-                            <td class="text-left">
-                                @if (is_array($one['list_views']))
-                                    @foreach ($one['list_views'] as $key=>$item)
-                                        {{$key}}:{{implode(',',$item)}}
+                                    <td class="text-center" scope="row">
+                                        {{$one['id']}}
+                                        @if ($one['form_blocks'])
+                                            <i class="fa fa-angle-right text-muted"></i>
+                                        @endif
+                                    </td>
+                                    <td class="text-left" scope="row">
+                                        <a href="{{url('form/edit?form_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="Edit">{{$one['title']}}</a>
+                                    </td>
+                                    <td class="text-left">
+                                        <span class="badge badge-danger">{{$one['module']}}</span>
+                                    </td>
+                                    <td class="text-left">
+                                        @if (is_array($one['list_views']))
+                                            @foreach ($one['list_views'] as $key=>$item)
+                                                {{$key}}:{{implode(',',$item)}}
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{url('form/items?form_id='.$one['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
+                                            <i class="fa fa-pencil-alt mr-1"></i>字段
+                                        </a>
+                                    </td>
+                                </tr>
+                                @if (!empty($one['form_blocks']))
+                                    <tbody class="font-size-sm">
+                                    @foreach ($one['form_blocks'] as $key=>$sub)
+                                        <tr>
+                                            <td class="text-center"></td>
+                                            <td class="text-left" scope="row">
+                                                <a href="{{url('form/edit?form_id='.$sub['id'])}}" data-toggle="tooltip"  data-original-title="Edit">{{$sub['title']}}</a>
+                                            </td>
+                                            <td class="text-left">
+                                                <span class="badge badge-danger">{{$sub['module']}}</span>
+                                            </td>
+                                            <td class="text-left">
+                                                @if (is_array($sub['list_views']))
+                                                    @foreach ($sub['list_views'] as $key=>$item)
+                                                        {{$key}}:{{implode(',',$item)}}
+                                                    @endforeach
+                                                @endif
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="{{url('form/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
+                                                    <i class="fa fa-pencil-alt mr-1"></i>字段
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                    @endif
                                     @endforeach
                                 @endif
-                            </td>
-                            <td class="text-center">
-                                <a href="" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
-                                    <i class="fa fa-pencil-alt mr-1"></i>字段
-                                </a>
-                            </td>
-                        </tr>
-                            @endforeach
-                        @endif
                         </tbody>
                     </table>
                     <nav aria-label="Page navigation">

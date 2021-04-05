@@ -22,4 +22,12 @@ class Tips
     const CAPTCHA_ERR = '验证码错误';
     const USER_PASS_ERR = '用户名或密码错误';
     const USER_LOGIN_INFO = '用户登录成功';
+
+    const PARAM_ERR = '访问异常,缺少';
+    const AJAX_SUCCESS = 'Success';
+
+    const FORM_TITLE_EMPTY = '表单名能为空';
+    const FORM_MODULE_EMPTY = '类型或别名能为空';
+
+    const SAVE_SUCCESS = '保存成功';
 }

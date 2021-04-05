@@ -40,8 +40,9 @@ class UserController extends BasePmController
         if (login_user()) {
             return redirect('/');
         }
-
-        return view("pm.user.login", []);
+        return view("pm.user.login", [
+            'ref'=>request()->get('ref','/')
+        ]);
     }
 
     /**
@@ -75,10 +76,11 @@ class UserController extends BasePmController
         //校验用户名和密码
         try {
             $this->usersRep->doLoginRep($param);
-            return redirect('/');
+            $ref = request()->get('ref','/');
+            return redirect($ref);
         } catch (OpmfException $e) {
             $messages = $e->getMessage();
-            Log::warning('[Pm UserController] doLogin warning', [
+            Log::warning('[Pm UserController] sign warning', [
                 'messages' => $messages,
                 'code' => $e->getCode(),
                 'file' => $e->getFile(),

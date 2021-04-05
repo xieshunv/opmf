@@ -19,6 +19,6 @@ class BaseApplyController extends Controller
 {
     public function __construct()
     {
-
+        $this->openMaintain();
     }
 }

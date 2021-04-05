@@ -23,8 +23,12 @@ class HomeController extends BasePmController
         parent::__construct();
     }
 
+    /**
+     * 首页
+     */
     public function index()
     {
         return view('pm.home.index', []);
     }
+
 }

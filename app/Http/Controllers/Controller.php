@@ -33,4 +33,14 @@ class Controller extends BaseController
             return false;
         }
     }
+
+    /**
+     * 开启维护模式
+     */
+    protected function openMaintain()
+    {
+        $this->middleware(function(){
+            return response()->view('errors.maintain');
+        });
+    }
 }

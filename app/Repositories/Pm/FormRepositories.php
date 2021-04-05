@@ -27,6 +27,11 @@ class FormRepositories extends BaseRepositories
         parent::__construct();
     }
 
+    /**
+     * 表单列表
+     * @param array $map
+     * @return
+     */
     public function getAllForms(array $map)
     {
         $list = Forms::query()
@@ -40,10 +45,67 @@ class FormRepositories extends BaseRepositories
             ->when(isset($map['program_id']), function ($q) use ($map) {
                 return $q->where(['module' => 'program', 'module_id' => $map['program_id']]);
             })
-            ->orderBy('id','desc')
+            ->orderBy('id', 'desc')
             ->paginate(self::SIZE);
+        if (!empty($list)) {
+            foreach ($list as &$item) {
+                $subItems = Forms::select('*')
+                    ->where(['parent_id' => $item['id']])
+                    ->get();
+                $item['form_blocks'] = $subItems ? $subItems->toArray() : [];
+            }
+        }
 
         return $list;
+    }
+
+    /**
+     * 获取表单
+     */
+    public function getFormDetails(array $map)
+    {
+        $form = Forms::query()
+            ->select('*')
+            ->when(isset($map['id']), function ($q) use ($map) {
+                return $q->where('id', $map['id']);
+            })
+            ->when(isset($map['program_id']), function ($q) use ($map) {
+                return $q->where(['module' => 'program', 'module_id' => $map['program_id']]);
+            })
+            ->first();
+
+        return $form ? $form->toArray() :[];
+    }
+
+    /**
+     * 保存更新 Form
+     * @return int
+     */
+    public function saveOrUpdateForm(array $data = []): int
+    {
+        $lvs = [];
+        if (!empty($data['list_views_group_id']) && !empty($data['list_views_group_fields'])) {
+            foreach ($data['list_views_group_id'] as $k => $id) {
+                $_f = str_replace([' ', '，'], ['', ','], $data['list_views_group_fields'][$k]);
+                if ($_f) {
+                    $lvs[$id] = explode(',', $_f);
+                }
+            }
+        }
+
+        $data['list_views'] = json_encode($lvs);
+
+        unset($data['list_views_group_id']);
+        unset($data['list_views_group_fields']);
+
+        $id = $data['id'];
+        unset($data['id']);
+        if ($id) {
+            $ret = Forms::where(['id' => $id])->update($data);
+        } else {
+            $ret = Forms::insert($data);
+        }
+        return $ret;
     }
 
 }

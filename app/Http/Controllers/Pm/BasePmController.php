@@ -14,11 +14,13 @@
 namespace App\Http\Controllers\Pm;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Users;
 
 class BasePmController extends Controller
 {
     public function __construct()
     {
-
     }
+
 }

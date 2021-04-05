@@ -26,6 +26,12 @@ Route::middleware(['web', 'check.login'])
         $routes->get('/pwd/save', 'HomeController@pwdSave');
         //表单列表
         $routes->get('/form', 'FormController@index');
+        //表单 添加/编辑
+        $routes->get('/form/edit', 'FormController@formEdit');
+        //ajax 通过Program_id获取当前项目期ID
+        $routes->get('/form/circle_id', 'FormController@ajaxGetProgramCircleId');
+        //表单 保存
+        $routes->post('/form/save', 'FormController@formSave');
 
     });
 
@@ -34,3 +40,4 @@ Route::get('/login', 'UserController@login');
 Route::post('/sign', 'UserController@sign');
 //退出系统
 Route::get('/logout', 'UserController@logout');
+

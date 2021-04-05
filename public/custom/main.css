@@ -1,1 +1,8 @@
+form .error {
+    border-color: #e04f1a;
+}
 
+form label.error {
+    color:#e04f1a;
+    font-size: 80%;
+}

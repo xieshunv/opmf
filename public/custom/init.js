@@ -1,4 +1,11 @@
 $(function(){
+    //初始化必要的js组件
+    Dashmix.helpers([
+        'table-tools-checkable',
+        'table-tools-sections',
+        'ckeditor5','select2', 'datepicker', 'colorpicker', 'maxlength', 'ckeditor','flatpickr'
+    ]);
+
     $(".ajaxlink").click(function () {
         var url = $(this).attr('url');
         $(".tips-ok").attr('url',url);
