@@ -35,8 +35,6 @@ Route::middleware(['web', 'check.login'])
 
     });
 
-
-
 //登陆页面
 Route::get('/login', 'UserController@login');
 Route::post('/sign', 'UserController@sign');
