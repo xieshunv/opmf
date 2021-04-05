@@ -9,8 +9,7 @@
                     <a href="{{url('/form')}}" class="flex-sm-fill font-size-sm font-w400 mt-2 mb-0 mb-sm-2">
                         <i class="fa fa-angle-right fa-fw text-primary"></i>表单管理
                     </a>
-                    <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-
+                    <nav class="flex-sm-00-auto ml-sm-3 font-size-sm" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">新增</li>
                             <!--
@@ -30,11 +29,8 @@
                 <div class="block-content">
                     <div class="row justify-content-center">
                         <div class="col-md-10 font-size-h3 font-w600 pb-4 mb-4 text-center border-bottom">
-
                             @if(!empty($form['title']))
                                 {{$form['title']}}
-                            @else
-                                新增一个表单
                             @endif
                         </div>
                         <div class="col-md-12 col-lg-8 font-size-sm">
@@ -134,7 +130,7 @@
                                             <div class="col-md-12 form-inline" id="{{$k}}" style="margin-top: 5px;">
                                                 <input type="text" value="{{$k}}" class="form-control mr-sm-2 mb-sm-0 col-2" name="list_views_group_id[]" placeholder="id">
                                                 <input type="text" value="{{implode(',',$v)}}"class="form-control mr-sm-2 mb-sm-0 col-9" name="list_views_group_fields[]" placeholder="fields">
-                                                <a href="javascript:;" onclick="del_list_views({{$k}})">
+                                                <a href="javascript:;" onclick="del_list_views('{{$k}}')">
                                                     <i class="fa fa-times fa-fw" style="color: red;"></i>
                                                 </a>
                                             </div>

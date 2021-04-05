@@ -20,6 +20,12 @@ class Forms extends Model
 
     public function items()
     {
-        return $this->hasMany(FormItem::class, 'form_id', 'id')->orderBy('sequence','asc');
+        return $this->hasMany(FormItem::class, 'form_id', 'id')->orderBy('sequence', 'asc');
     }
+
+    public function stage()
+    {
+        return $this->hasOne(ProgramCircle::class, 'id', 'program_circle_id');
+    }
+
 }

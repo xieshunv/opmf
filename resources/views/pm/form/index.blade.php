@@ -8,8 +8,7 @@
                     <h1 class="flex-sm-fill font-size-sm font-w400 mt-2 mb-0 mb-sm-2">
                         <i class="fa fa-angle-right fa-fw text-primary"></i>表单管理
                     </h1>
-                    <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-
+                    <nav class="flex-sm-00-auto ml-sm-3 font-size-sm" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">表单</li>
                             <!--
@@ -51,8 +50,9 @@
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="text-left">表单名称</th>
+                                <th class="text-center">项目期</th>
                                 <th class="text-left">模块</th>
-                                <th class="text-left" style="width: 60%;">展示字段</th>
+                                <th class="text-left" style="width: 55%;">展示字段</th>
                                 <th class="text-center">操作</th>
                             </tr>
                         </thead>
@@ -71,7 +71,10 @@
                                         @endif
                                     </td>
                                     <td class="text-left" scope="row">
-                                        <a href="{{url('form/edit?form_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="Edit">{{$one['title']}}</a>
+                                        <a href="{{url('/form/edit?form_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="Edit">{{$one['title']}}</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge badge-info">{{$one['stage']['name']??0}}</span>
                                     </td>
                                     <td class="text-left">
                                         <span class="badge badge-danger">{{$one['module']}}</span>
@@ -84,9 +87,11 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{url('form/items?form_id='.$one['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
-                                            <i class="fa fa-pencil-alt mr-1"></i>字段
-                                        </a>
+                                        @if (empty($one['form_blocks']))
+                                           <a href="{{url('/items?form_id='.$one['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
+                                                <i class="fa fa-pencil-alt mr-1"></i>字段
+                                            </a>
+                                       @endif
                                     </td>
                                 </tr>
                                 @if (!empty($one['form_blocks']))
@@ -95,7 +100,10 @@
                                         <tr>
                                             <td class="text-center"></td>
                                             <td class="text-left" scope="row">
-                                                <a href="{{url('form/edit?form_id='.$sub['id'])}}" data-toggle="tooltip"  data-original-title="Edit">{{$sub['title']}}</a>
+                                                <a href="{{url('/form/edit?form_id='.$sub['id'])}}" data-toggle="tooltip"  data-original-title="Edit">{{$sub['title']}}</a>
+                                            </td>
+                                            <td class="text-left">
+                                                <span class="badge badge-info"></span>
                                             </td>
                                             <td class="text-left">
                                                 <span class="badge badge-danger">{{$sub['module']}}</span>
@@ -108,7 +116,7 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{url('form/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
+                                                <a href="{{url('/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
                                                     <i class="fa fa-pencil-alt mr-1"></i>字段
                                                 </a>
                                             </td>

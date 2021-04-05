@@ -20,10 +20,10 @@ Route::middleware(['web', 'check.login'])
         $routes->get('/', 'HomeController@index');
         //个人资料
         $routes->get('/profile/edit', 'UserController@profile');
-        $routes->get('/profile/save', 'HomeController@profileSave');
+        $routes->post('/profile/save', 'HomeController@profileSave');
         //修改密码
-        $routes->get('/pwd/edit', 'UserController@pwd');
-        $routes->get('/pwd/save', 'HomeController@pwdSave');
+        $routes->get('/profile/pwd', 'UserController@pwd');
+        $routes->post('/profile/save/pwd', 'HomeController@pwdSave');
         //表单列表
         $routes->get('/form', 'FormController@index');
         //表单 添加/编辑
@@ -32,6 +32,14 @@ Route::middleware(['web', 'check.login'])
         $routes->get('/form/circle_id', 'FormController@ajaxGetProgramCircleId');
         //表单 保存
         $routes->post('/form/save', 'FormController@formSave');
+        //表单预览
+        $routes->get('/form/preview', 'FormController@preview');
+        //表单字段列表
+        $routes->get('/items', 'ItemsController@index');
+        $routes->get('/items/delete', 'ItemsController@delete');
+        //添加 编辑字段
+        $routes->get('/items/edit', 'ItemsController@edit');
+        $routes->get('/items/save', 'ItemsController@save');
 
     });
 

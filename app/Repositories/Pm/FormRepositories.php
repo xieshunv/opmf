@@ -74,7 +74,7 @@ class FormRepositories extends BaseRepositories
             })
             ->first();
 
-        return $form ? $form->toArray() :[];
+        return $form;
     }
 
     /**

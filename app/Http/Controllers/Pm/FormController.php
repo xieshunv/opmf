@@ -143,7 +143,6 @@ class FormController extends BasePmController
      */
     public function formSave()
     {
-        $ref = Request()->server('HTTP_REFERER');
         //接收参数
         $data = request()->all();
         //验证规则
@@ -154,10 +153,10 @@ class FormController extends BasePmController
             'title.*' => Tips::FORM_TITLE_EMPTY,
         ];
 
+        $ref = Request()->server('HTTP_REFERER');
         $checkRet = $this->paramValidate($data, $rules, $messages, $errorMsg);
         if (false === $checkRet) {
             session()->put('error', $errorMsg);
-            $ref = Request()->server('HTTP_REFERER');
             return redirect($ref);
         }
 
@@ -176,6 +175,14 @@ class FormController extends BasePmController
             session()->put('error', $errorMsg);
             return redirect($ref);
         }
+    }
+
+    /**
+     * 表单预览
+     */
+    public  function preview ()
+    {
+
     }
 
 }
