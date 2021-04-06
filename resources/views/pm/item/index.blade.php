@@ -39,7 +39,7 @@
                         <table class="table table-vcenter js-table-sections font-size-sm table-hover ">
                             <thead class="thead-light">
                             <tr>
-                                <th >排序</th>
+                                <th>排序</th>
                                 <th >字段</th>
                                 <th >显示名称</th>
                                 <th >类型</th>
@@ -69,11 +69,11 @@
                                     <td>{{$one['data']['param']['placeholder']}}</td>
                                     <td>{{$one['data']['li_class']}}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-sm btn-light" href="{{url('/items/edit?item_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="Edit">
-                                            <i class="fa fa-fw fa-pencil-alt text-primary"></i>
+                                        <a class="btn btn-sm btn-alt-primary" href="{{url('/items/edit?item_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="编辑">
+                                            <i class="fa fa-fw  fa-edit "></i>
                                         </a>
-                                        <a class="btn btn-sm btn-light" href="{{url('/items/delete?item_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="Delete">
-                                            <i class="fa fa-fw fa-times text-danger"></i>
+                                        <a class="btn btn-sm btn-alt-primary" href="{{url('/items/delete?item_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="删除">
+                                            <i class="fa fa-fw fa-times "></i>
                                         </a>
                                     </td>
                                 </tr>

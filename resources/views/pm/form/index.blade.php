@@ -48,7 +48,7 @@
                     <table class="table table-vcenter js-table-sections font-size-sm table-hover ">
                         <thead class="thead-light">
                             <tr>
-                                <th class="text-center">ID</th>
+                                <th class="text-center">#</th>
                                 <th class="text-left">表单名称</th>
                                 <th class="text-center">项目期</th>
                                 <th class="text-left">模块</th>
@@ -88,8 +88,8 @@
                                     </td>
                                     <td class="text-center">
                                         @if (empty($one['form_blocks']))
-                                           <a href="{{url('/items?form_id='.$one['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
-                                                <i class="fa fa-pencil-alt mr-1"></i>字段
+                                           <a href="{{url('/items?form_id='.$one['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="添加/编辑 字段">
+                                               <i class="fa  fa-edit"></i>
                                             </a>
                                        @endif
                                     </td>
@@ -116,8 +116,8 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{url('/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="Edit">
-                                                    <i class="fa fa-pencil-alt mr-1"></i>字段
+                                                <a href="{{url('/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="添加/编辑 字段">
+                                                    <i class="fa  fa-edit"></i>
                                                 </a>
                                             </td>
                                         </tr>
