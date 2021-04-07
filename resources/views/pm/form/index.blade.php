@@ -88,7 +88,7 @@
                                     </td>
                                     <td class="text-center">
                                         @if (empty($one['form_blocks']))
-                                           <a href="{{url('/items?form_id='.$one['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="添加/编辑 字段">
+                                           <a href="{{url('/items?form_id='.$one['id'])}}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip"  data-original-title="添加/编辑 字段">
                                                <i class="fa  fa-edit"></i>
                                             </a>
                                        @endif
@@ -116,7 +116,7 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{url('/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-alt-primary" data-toggle="tooltip"  data-original-title="添加/编辑 字段">
+                                                <a href="{{url('/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip"  data-original-title="添加/编辑 字段">
                                                     <i class="fa  fa-edit"></i>
                                                 </a>
                                             </td>

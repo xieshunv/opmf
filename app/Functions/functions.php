@@ -38,3 +38,14 @@ if (!function_exists('getRandomStr')) {
         return $str;
     }
 }
+
+/**
+ * 是否Json格式
+ */
+if (!function_exists('isJson')) {
+    function isJson($string)
+    {
+        json_decode($string);
+        return (json_last_error() == JSON_ERROR_NONE);
+    }
+}

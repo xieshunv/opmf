@@ -153,11 +153,10 @@ class FormController extends BasePmController
             'title.*' => Tips::FORM_TITLE_EMPTY,
         ];
 
-        $ref = Request()->server('HTTP_REFERER');
         $checkRet = $this->paramValidate($data, $rules, $messages, $errorMsg);
         if (false === $checkRet) {
             session()->put('error', $errorMsg);
-            return redirect($ref);
+            return redirect($this->ref);
         }
 
         try {
@@ -173,7 +172,7 @@ class FormController extends BasePmController
                 'line' => $e->getLine(),
             ]);
             session()->put('error', $errorMsg);
-            return redirect($ref);
+            return redirect($this->ref);
         }
     }
 

@@ -1172,19 +1172,19 @@ select.form-control:focus::-ms-value {
 }
 
 .border-primary-light {
-  border-color: #2a8bf9 !important;
+  border-color: #5f7ec1 !important;
 }
 
 .border-primary-lighter {
-  border-color: #74b3fb !important;
+  border-color: #96abd6 !important;
 }
 
 .border-primary-dark {
-  border-color: #054d9e !important;
+  border-color: #2d4373 !important;
 }
 
 .border-primary-darker {
-  border-color: #022954 !important;
+  border-color: #17233c !important;
 }
 
 .border-success-light {
@@ -1204,7 +1204,7 @@ select.form-control:focus::-ms-value {
 }
 
 .border-primary {
-  border-color: #0665d0 !important;
+  border-color: #3b5998 !important;
 }
 
 .border-secondary {

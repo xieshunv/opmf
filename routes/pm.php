@@ -39,7 +39,7 @@ Route::middleware(['web', 'check.login'])
         $routes->get('/items/delete', 'ItemsController@delete');
         //添加 编辑字段
         $routes->get('/items/edit', 'ItemsController@edit');
-        $routes->get('/items/save', 'ItemsController@save');
+        $routes->post('/items/save', 'ItemsController@save');
 
     });
 

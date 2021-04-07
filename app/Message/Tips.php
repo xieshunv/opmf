@@ -30,4 +30,6 @@ class Tips
     const FORM_MODULE_EMPTY = '类型或别名能为空';
 
     const SAVE_SUCCESS = '保存成功';
+    const SAVE_ERROR = '保存失败';
+
 }

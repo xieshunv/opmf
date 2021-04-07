@@ -19,8 +19,10 @@ use App\Models\Users;
 
 class BasePmController extends Controller
 {
+    public $ref;
     public function __construct()
     {
+        $this->ref = Request()->server('HTTP_REFERER');
     }
 
 }

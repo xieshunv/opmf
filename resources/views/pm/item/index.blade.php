@@ -69,12 +69,14 @@
                                     <td>{{$one['data']['param']['placeholder']}}</td>
                                     <td>{{$one['data']['li_class']}}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-sm btn-alt-primary" href="{{url('/items/edit?item_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="编辑">
-                                            <i class="fa fa-fw  fa-edit "></i>
-                                        </a>
-                                        <a class="btn btn-sm btn-alt-primary" href="{{url('/items/delete?item_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="删除">
-                                            <i class="fa fa-fw fa-times "></i>
-                                        </a>
+                                        <div class="btn-group">
+                                            <a class="btn btn-sm btn-outline-primary" href="{{url('/items/edit?item_id='.$one['id'].'&form_id='.$one['form_id'])}}" data-toggle="tooltip"  data-original-title="编辑">
+                                                <i class="fa fa-fw  fa-edit "></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-outline-primary" href="{{url('/items/delete?item_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="删除">
+                                                <i class="fa fa-fw fa-times "></i>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
