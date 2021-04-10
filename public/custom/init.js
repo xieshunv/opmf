@@ -6,19 +6,30 @@ $(function(){
         'ckeditor5','select2', 'datepicker', 'colorpicker', 'maxlength', 'ckeditor','flatpickr'
     ]);
 
-    $(".ajaxlink").click(function () {
-        var url = $(this).attr('url');
-        $(".tips-ok").attr('url',url);
+    // Ajaxlink Confirm
+    $('a.ajaxlink').on('click',function(e){
         var ask = $(this).attr('ask');
-        $("#ask-info").html(ask);
-        $('#tips-normal').modal('show');
-    });
-    $(".tips-ok").click(function () {
         var url = $(this).attr('url');
-        if (url != '' && url != undefined) {
-            window.location.href=url;
-        }
-    });
+        Swal.fire({
+            title: "",
+            text: ask,
+            icon: "warning",
+            showCancelButton: !0,
+            customClass: {
+                confirmButton: "btn btn-danger font-size-sm m-1",
+                cancelButton: "btn btn-secondary font-size-sm m-1"
+            },
+            confirmButtonText: "确认",
+            cancelButtonText:"取消",
+        }).then(function (e) {
+            //  e.value ? Swal.fire("Deleted!", "Your imaginary file has been deleted.", "success") : "cancel" === e.dismiss && Swal.fire("Cancelled", "Your imaginary file is safe :)", "error");
+            if (e.value) {
+                window.location.href=url;
+            } else {
+                return false;
+            }
+        });
+    })
 
     $.extend($.validator.messages, {
         required: "这是必填字段",

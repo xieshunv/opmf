@@ -32,6 +32,7 @@ mix
 
     /* Page JS */
     .js('resources/js/pages/tables_datatables.js', 'public/js/pages/tables_datatables.js')
+    .js('resources/js/pages/be_comp_dialogs.min.js', 'public/js/pages/be_comp_dialogs.min.js')
     .js('resources/js/common/common.js', 'public/js/common/common.js')
 
     /* Tools */

@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/sweetalert2/sweetalert2.min.css')}}">
+
     <!-- Fonts and Styles -->
     <link rel="stylesheet" id="css-main" href="{{ mix('css/dashmix.css') }}">
 
@@ -37,10 +39,13 @@
     <script src="{{asset('/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
+    <script src="{{asset('/plugins/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
     <script src="{{asset('/plugins/ckeditor/ckeditor.js')}}"></script>
     <script src="{{asset('/plugins/ckeditor5/build/ckeditor.js')}}"></script>
     <script src="{{asset('/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+    <script src="{{asset('/js/pages/be_comp_dialogs.min.js')}}"></script>
+
     <script src="{{asset('/custom/init.js')}}"></script>
     <link rel="stylesheet" href="{{asset('/custom/main.css')}}">
 </head>

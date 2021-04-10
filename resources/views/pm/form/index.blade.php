@@ -39,7 +39,7 @@
                                 </form>
                             </div>
                             <div class="col-sm-6 order-sm-2 mb-1 mb-sm-0 text-center text-sm-right">
-                                <a href="{{url("form/edit")}}" class="btn btn-sm  btn-primary">
+                                <a href="{{url("form/edit")}}" class="btn btn-sm  btn-primary" data-toggle="tooltip"  data-original-title="Add Form">
                                     <i class="fa fa-fw fa-plus opacity-50 mr-1"></i>新增表单
                                 </a>
                             </div>
@@ -86,11 +86,12 @@
                                             @endforeach
                                         @endif
                                     </td>
-                                    <td class="text-center">
-                                        @if (empty($one['form_blocks']))
-                                           <a href="{{url('/items?form_id='.$one['id'])}}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip"  data-original-title="添加/编辑 字段">
-                                               <i class="fa  fa-edit"></i>
+                                    <td class="text-left">
+                                        @if (empty(count($one->form_blocks)))
+                                           <a href="{{url('/items?form_id='.$one['id'])}}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip"  data-original-title="编辑">
+                                               <i class="fa fa-edit"></i>
                                             </a>
+                                            <span class="badge badge-warning" data-toggle="tooltip"  data-original-title="字段">{{count($one['items'])}}</span>
                                        @endif
                                     </td>
                                 </tr>
@@ -115,10 +116,11 @@
                                                     @endforeach
                                                 @endif
                                             </td>
-                                            <td class="text-center">
-                                                <a href="{{url('/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip"  data-original-title="添加/编辑 字段">
-                                                    <i class="fa  fa-edit"></i>
+                                            <td class="text-left">
+                                                <a href="{{url('/items?form_id='.$sub['id'])}}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip"  data-original-title="编辑">
+                                                    <i class="fa fa-edit"></i>
                                                 </a>
+                                                <span class="badge badge-warning" data-toggle="tooltip"  data-original-title="字段">{{count($sub->items)}}</span>
                                             </td>
                                         </tr>
                                     @endforeach

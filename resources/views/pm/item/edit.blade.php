@@ -79,6 +79,21 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-md-6">
+                                        <label for="max_value">step(精度：0.01 表示两位)</label>
+                                        <input type="text" class="form-control" id="step" name="step" value="{{isset($item['param']['step'])?$item['param']['step']:1}}">
+                                        <small class="form-text text-muted">类型为number有效</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="min_value">日期精确到秒</label>
+                                        <select class="custom-select" id="seconds" name="seconds">
+                                            <option value="0" @if(isset($item['param']['seconds']) && $item['param']['seconds'] ==0) selected=true @endif>否</option>
+                                            <option value="1" @if(isset($item['param']['seconds']) && $item['param']['seconds'] ==1) selected=true @endif>是</option>
+                                        </select>
+                                        <small class="form-text text-muted">类型为date有效</small>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6">
                                         <label for="question_idx">问答题列表idx</label>
                                         <input type="text" class="form-control" id="question_idx" name="question_idx" value="{{isset($item['question_idx'])?$item['question_idx']:''}}">
                                         <small class="form-text text-muted"></small>

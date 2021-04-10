@@ -6,7 +6,7 @@
             <div class="content content-full py-1">
                 <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                     <a href="{{url('/form')}}" class="flex-sm-fill font-size-sm font-w400 mt-2 mb-0 mb-sm-2">
-                        <i class="fa fa-angle-right fa-fw text-primary"></i>表单管理
+                        <i class="fa fa-angle-right fa-fw text-primary"></i>表单字段
                     </a>
                     <nav class="flex-sm-00-auto ml-sm-3 font-size-sm" aria-label="breadcrumb">
                         <ol class="breadcrumb">
@@ -73,7 +73,7 @@
                                             <a class="btn btn-sm btn-outline-primary" href="{{url('/items/edit?item_id='.$one['id'].'&form_id='.$one['form_id'])}}" data-toggle="tooltip"  data-original-title="编辑">
                                                 <i class="fa fa-fw  fa-edit "></i>
                                             </a>
-                                            <a class="btn btn-sm btn-outline-primary" href="{{url('/items/delete?item_id='.$one['id'])}}" data-toggle="tooltip"  data-original-title="删除">
+                                            <a class="btn btn-sm btn-outline-primary ajaxlink"  href="javascript:;" url="{{url('/items/delete?item_id='.$one['id'].'&form_id='.$one['form_id'])}}"  ask="确定删除本条记录吗？" data-toggle="tooltip"  data-original-title="删除">
                                                 <i class="fa fa-fw fa-times "></i>
                                             </a>
                                         </div>
@@ -90,5 +90,4 @@
         </div>
         <!-- END Page Content -->
     </main>
-
 @endsection

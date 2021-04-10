@@ -36,6 +36,7 @@ Route::middleware(['web', 'check.login'])
         $routes->get('/form/preview', 'FormController@preview');
         //表单字段列表
         $routes->get('/items', 'ItemsController@index');
+        //删除表单字段
         $routes->get('/items/delete', 'ItemsController@delete');
         //添加 编辑字段
         $routes->get('/items/edit', 'ItemsController@edit');

@@ -31,5 +31,7 @@ class Tips
 
     const SAVE_SUCCESS = '保存成功';
     const SAVE_ERROR = '保存失败';
+    const DELETE_SUCCESS= '删除成功';
+    const DELETE_ERROR='删除失败';
 
 }

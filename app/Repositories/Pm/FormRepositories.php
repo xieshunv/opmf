@@ -17,6 +17,7 @@ namespace App\Repositories\Pm;
 use App\Models\Forms;
 use App\Message\Tips;
 use Carbon\Carbon;
+use App\Models\FormItem;
 use App\Repositories\BaseRepositories;
 use App\Exceptions\OpmfException;
 
@@ -47,12 +48,13 @@ class FormRepositories extends BaseRepositories
             })
             ->orderBy('id', 'desc')
             ->paginate(self::SIZE);
-        if (!empty($list)) {
-            foreach ($list as &$item) {
-                $subItems = Forms::select('*')
-                    ->where(['parent_id' => $item['id']])
-                    ->get();
-                $item['form_blocks'] = $subItems ? $subItems->toArray() : [];
+        foreach ($list as &$value) {
+            $where = ['parent_id' => $value->id];
+            $subItems = Forms::select('*')
+                ->where($where)
+                ->get();
+            if ($subItems) {
+                $value->form_blocks = $subItems;
             }
         }
 

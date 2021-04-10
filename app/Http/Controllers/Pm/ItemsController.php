@@ -20,7 +20,6 @@ use App\Repositories\Pm\FormRepositories;
 use App\Repositories\Pm\ItemRepositories;
 
 
-
 class ItemsController extends BasePmController
 {
     /**
@@ -33,7 +32,7 @@ class ItemsController extends BasePmController
      */
     private $item;
 
-    public function __construct(FormRepositories $formRep,ItemRepositories $item)
+    public function __construct(FormRepositories $formRep, ItemRepositories $item)
     {
         parent::__construct();
         $this->formRep = $formRep;
@@ -45,16 +44,16 @@ class ItemsController extends BasePmController
      */
     public function index()
     {
-        $form_id = request()->get('form_id',0);
+        $form_id = request()->get('form_id', 0);
         if (empty($form_id)) {
             return redirect('/form');
         }
 
-        $form = $this->formRep->getFormDetails(['id'=>$form_id]);
+        $form = $this->formRep->getFormDetails(['id' => $form_id]);
         $data = [
-            'form'=>$form
+            'form' => $form
         ];
-        return view('pm.item.index',$data);
+        return view('pm.item.index', $data);
     }
 
     public function edit()
@@ -70,7 +69,7 @@ class ItemsController extends BasePmController
             $data['item'] = $itemData;
         }
 
-        $formData =  $this->formRep->getFormDetails(['id'=>$form_id]);
+        $formData = $this->formRep->getFormDetails(['id' => $form_id]);
         $data['form_title'] = $formData['title'];
         $data['field_types'] = $this->item->getFieldTypesAll();
         $data['form_id'] = $form_id;
@@ -82,13 +81,13 @@ class ItemsController extends BasePmController
     {
         $data = request()->all();
         //验证规则
-        $rules = ['form_id'=>'required','display' => 'required', 'key' => 'required', 'type' => 'required'];
+        $rules = ['form_id' => 'required', 'display' => 'required', 'key' => 'required', 'type' => 'required'];
         //提示信息
         $messages = [
-            'display.*' => Tips::PARAM_ERR.'display',
-            'key.*' => Tips::PARAM_ERR.'key',
-            'type.*' => Tips::PARAM_ERR.'type',
-            'form_id.*' => Tips::PARAM_ERR.'form_id'
+            'display.*' => Tips::PARAM_ERR . 'display',
+            'key.*' => Tips::PARAM_ERR . 'key',
+            'type.*' => Tips::PARAM_ERR . 'type',
+            'form_id.*' => Tips::PARAM_ERR . 'form_id'
         ];
 
         $checkRet = $this->paramValidate($data, $rules, $messages, $errorMsg);
@@ -110,10 +109,35 @@ class ItemsController extends BasePmController
         return redirect('/items?form_id=' . $data['form_id']);
     }
 
+    /**
+     * 删除表单字段
+     * @return
+     */
     public function delete()
     {
+        //获取参数
+        $filter = request()->all();
+        //验证规则
+        $rules = ['form_id' => 'required', 'item_id' => 'required'];
+        //提示信息
+        $messages = [
+            'item_id.*' => Tips::PARAM_ERR . 'item_id',
+            'form_id.*' => Tips::PARAM_ERR . 'form_id'
+        ];
 
+        $checkRet = $this->paramValidate($filter, $rules, $messages, $errorMsg);
+        if (false === $checkRet) {
+            session()->put('error', $errorMsg);
+            return redirect($this->ref);
+        }
+
+        $ret = $this->item->deleteOneItem($filter);
+
+        if ($ret) {
+            session()->put('success', Tips::DELETE_SUCCESS);
+        } else {
+            session()->put('error', Tips::DELETE_ERROR);
+        }
+        return redirect('/items?form_id=' . $filter['form_id']);
     }
-
-
 }

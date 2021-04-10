@@ -70,6 +70,8 @@ class ItemRepositories extends BaseRepositories
                 'default_value' => $data['default_value'],
                 'max_value' => $data['max_value'],
                 'min_value' => $data['min_value'],
+                'seconds' => $data['seconds'],
+                'step' => $data['step'],
             ],
             'hidden' => [
                 'edit' => $data['hidden_edit'],
@@ -93,7 +95,7 @@ class ItemRepositories extends BaseRepositories
 
         if ($data['options_list']) {
             if (isJson($data['options_list'])) {
-                $item_data['param']['options'] = json_decode($data['options_list'],true);
+                $item_data['param']['options'] = json_decode($data['options_list'], true);
             } else {
                 $option_values = explode(',', str_replace([' ', '"', '\'', '，', '：'], ['', '', '', ',', ':'], $data['options_list']));
                 $item_data['param']['options'] = $option_values;
@@ -156,6 +158,16 @@ class ItemRepositories extends BaseRepositories
         $item->save();
 
         return $item->toArray();
+    }
+
+    /**
+     * 删除单个item
+     * @param array $map
+     * @return bool
+     */
+    public function deleteOneItem(array $map = []): bool
+    {
+        return FormItem::where(['id' => $map['item_id']])->delete();
     }
 
 }
