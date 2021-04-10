@@ -41,7 +41,6 @@ Route::middleware(['web', 'check.login'])
         //添加 编辑字段
         $routes->get('/items/edit', 'ItemsController@edit');
         $routes->post('/items/save', 'ItemsController@save');
-
     });
 
 //登陆页面
@@ -49,4 +48,3 @@ Route::get('/login', 'UserController@login');
 Route::post('/sign', 'UserController@sign');
 //退出系统
 Route::get('/logout', 'UserController@logout');
-

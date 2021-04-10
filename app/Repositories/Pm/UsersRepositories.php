@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * pm端 账户相关操作
@@ -53,13 +54,13 @@ class UsersRepositories extends BaseRepositories
 
         //更新登录信息
         $setInfo = [
-            'last_at' =>Carbon::now(),
-            'last_ip'=>request()->ip()
+            'last_at' => Carbon::now(),
+            'last_ip' => request()->ip()
         ];
-        Users::query()->where(['id'=>$userInfo['id']])->update($setInfo);
+        Users::query()->where(['id' => $userInfo['id']])->update($setInfo);
         // 将信息保存到SESSION
-        session()->put('login_user',$userInfo->toArray());
-        session()->put('success',Tips::USER_LOGIN_INFO);
+        session()->put('login_user', $userInfo->toArray());
+        session()->put('success', Tips::USER_LOGIN_INFO);
 
         return true;
     }
@@ -72,5 +73,4 @@ class UsersRepositories extends BaseRepositories
     {
         return md5($pwd . self::SECRET_KEY);
     }
-
 }

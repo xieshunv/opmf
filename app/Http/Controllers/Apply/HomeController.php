@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 申请端 Base
@@ -13,7 +14,6 @@
  */
 
 namespace App\Http\Controllers\Apply;
-
 
 class HomeController extends BaseApplyController
 {

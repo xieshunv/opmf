@@ -18,4 +18,4 @@ Route::middleware('web')
     ->group(function ($routes) {
         //首页
         $routes->get('/', 'HomeController@index');
-});
+    });

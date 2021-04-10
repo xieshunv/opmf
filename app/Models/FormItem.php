@@ -23,25 +23,24 @@ class FormItem extends Model
      * 字段属性
      */
     private static $fieldTypes = [
-        'text'=>'text',
-        'select'=>'select',
-        'password'=>'password',
-        'number'=>'number',
-        'checkbox'=>'checkbox',
-        'radio'=>'radio',
-        'file'=>'file',
-        'date'=>'date',
-        'textarea'=>'textarea',
-        'address'=>'address',
-        'editor'=>'editor',
-        'split'=>'split',
-        'group'=>'group',
-        'hidden'=>'hidden',
+        'text' => 'text',
+        'select' => 'select',
+        'password' => 'password',
+        'number' => 'number',
+        'checkbox' => 'checkbox',
+        'radio' => 'radio',
+        'file' => 'file',
+        'date' => 'date',
+        'textarea' => 'textarea',
+        'address' => 'address',
+        'editor' => 'editor',
+        'split' => 'split',
+        'group' => 'group',
+        'hidden' => 'hidden',
     ];
 
     public static function getFieldTypes($type = '')
     {
         return $type ?  self::$fieldTypes[$type] : self::$fieldTypes;
     }
-
 }

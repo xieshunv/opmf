@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 申请端 Base
@@ -11,6 +12,7 @@
  * @version：   v1.0.0
  * @date:       2021-02-24 21:20
  */
+
 namespace App\Http\Controllers\Apply;
 
 use App\Http\Controllers\Controller;

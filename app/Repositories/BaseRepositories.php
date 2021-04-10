@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 业务逻辑处理基础类
@@ -24,5 +25,4 @@ class BaseRepositories
     public function __construct()
     {
     }
-
 }

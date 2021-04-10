@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => ['web']], function ($route) {
-    $route->get('/test','TestController@index');
+    $route->get('/test', 'TestController@index');
 });

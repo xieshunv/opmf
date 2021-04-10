@@ -21,6 +21,6 @@ class Program extends Model
     // 项目期
     public function circle()
     {
-        return $this->hasMany(ProgramCircle::class, 'program_id',  'id');
+        return $this->hasMany(ProgramCircle::class, 'program_id', 'id');
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * Program Repository
@@ -97,7 +98,6 @@ class ProgramRepository extends BaseRepositories
             ->paginate(self::PAGE_SIZE);
 
         return $data;
-
     }
 
     public function getOneStatus(int $id)
@@ -121,7 +121,6 @@ class ProgramRepository extends BaseRepositories
             unset($data['status_id']);
             return ProjectStatus::query()->insertGetId($data);
         }
-
     }
 
     public function getProgramDetailedInfo(int $programId)

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * pm端 表单相关操作
@@ -111,7 +112,9 @@ class ItemRepositories extends BaseRepositories
 
             for ($i = 0; $i < count($data['group_options_group_key']); $i++) {
                 $keys = $data['group_options_group_key'];
-                if (!isset($keys[$i])) continue;
+                if (!isset($keys[$i])) {
+                    continue;
+                }
                 $op = [
                     'key' => $keys[$i],
                     'display' => $data['group_options_group_display'][$i],
@@ -169,5 +172,4 @@ class ItemRepositories extends BaseRepositories
     {
         return FormItem::where(['id' => $map['item_id']])->delete();
     }
-
 }

@@ -22,7 +22,7 @@ class FormBuilder
             $param['value'] = $value;
 
             if ($param['type'] == 'checkbox') {
-                $param['name'] = $param['name'].'[]';
+                $param['name'] = $param['name'] . '[]';
             }
 
             $formItemList[] = $formItemFactory
@@ -45,7 +45,7 @@ class FormBuilder
             $value = $data[$param['name']] ?? '';
             $param['value'] = $value;
             if ($param['type'] == 'checkbox') {
-                $param['name'] = $param['name'].'[]';
+                $param['name'] = $param['name'] . '[]';
             }
 
             $formItemList[] = $formItemFactory

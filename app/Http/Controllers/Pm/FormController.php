@@ -117,7 +117,7 @@ class FormController extends BasePmController
                 [
                     'code' => 400,
                     'data' => [],
-                    'messages' => Tips::PARAM_ERR.':program_id'
+                    'messages' => Tips::PARAM_ERR . ':program_id'
                 ]
             );
         }

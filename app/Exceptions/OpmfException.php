@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 异常处理
@@ -11,6 +12,7 @@
  * @version：   v1.0.0
  * @date:       2021-04-01 22:40
  */
+
 namespace App\Exceptions;
 
 use Exception;
@@ -21,5 +23,4 @@ class OpmfException extends Exception
     {
         parent::__construct($message, $code);
     }
-
 }

@@ -11,7 +11,9 @@ use Illuminate\Validation\ValidationException;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     /**
      * 参数验证
@@ -39,7 +41,7 @@ class Controller extends BaseController
      */
     protected function openMaintain()
     {
-        $this->middleware(function(){
+        $this->middleware(function () {
             return response()->view('errors.maintain');
         });
     }

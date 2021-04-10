@@ -17,9 +17,9 @@ class CheckLogin
     {
         $userInfo = login_user();
         if (empty($userInfo)) {
-            $ref= $request->getRequestUri();
+            $ref = $request->getRequestUri();
             //跳转到登录页
-            return redirect('/login?ref='.$ref);
+            return redirect('/login?ref=' . $ref);
         }
 
         view()->share('userinfo', $userInfo);

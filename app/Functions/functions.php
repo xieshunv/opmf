@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 公共方法
@@ -19,7 +20,7 @@
 if (!function_exists('login_user')) {
     function login_user()
     {
-        return session()->get('login_user',[]);
+        return session()->get('login_user', []);
     }
 }
 

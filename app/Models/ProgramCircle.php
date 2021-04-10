@@ -16,6 +16,6 @@ class ProgramCircle extends Model
 
     public function program()
     {
-        return $this->belongsTo(Program::class,'program_id', 'id');
+        return $this->belongsTo(Program::class, 'program_id', 'id');
     }
 }

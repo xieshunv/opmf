@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 辅助编辑页面 SELECT 选项
@@ -32,7 +33,7 @@ class AuxiliaryRepositories extends BaseRepositories
         $formInfo = Forms::query()
             ->select(['id','title'])
             ->where([
-                'parent_id'=>0
+                'parent_id' => 0
             ])
             ->get();
         return $formInfo ? $formInfo->toArray() : [];
@@ -46,11 +47,9 @@ class AuxiliaryRepositories extends BaseRepositories
         $programInfo = Program::query()
             ->select(['id','short_title'])
             ->where([
-                'is_enabled'=>1
+                'is_enabled' => 1
             ])
             ->get();
         return $programInfo ? $programInfo->toArray() : [];
     }
-
-
 }
