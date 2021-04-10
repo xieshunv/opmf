@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 用户管理
@@ -41,7 +42,7 @@ class UserController extends BasePmController
             return redirect('/');
         }
         return view("pm.user.login", [
-            'ref'=>request()->get('ref', '/')
+            'ref' => request()->get('ref', '/')
         ]);
     }
 
