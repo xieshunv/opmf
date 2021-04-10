@@ -121,7 +121,7 @@ class FormController extends BasePmController
                 ]
             );
         }
-        
+
         try {
             $ret = $this->program->getCurrentCircle($programId);
             return response()->json(
@@ -142,6 +142,7 @@ class FormController extends BasePmController
                     'line' => $e->getLine(),
                 ]
             );
+
             return response()->json(
                 [
                     'code' => 400,
