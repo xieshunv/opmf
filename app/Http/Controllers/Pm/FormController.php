@@ -121,6 +121,7 @@ class FormController extends BasePmController
                 ]
             );
         }
+        
         try {
             $ret = $this->program->getCurrentCircle($programId);
             return response()->json(
