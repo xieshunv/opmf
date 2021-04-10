@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 表单管理
@@ -11,6 +12,7 @@
  * @version：   v1.0.0
  * @date:       2021/4/3 9:42 下午
  */
+
 namespace App\Http\Controllers\Pm;
 
 use App\Repositories\Pm\FormRepositories;
@@ -19,7 +21,6 @@ use App\Repositories\Pm\ProgramRepository;
 use App\Exceptions\OpmfException;
 use Illuminate\Support\Facades\Log;
 use App\Message\Tips;
-
 
 class FormController extends BasePmController
 {
@@ -42,7 +43,7 @@ class FormController extends BasePmController
         FormRepositories $formRep,
         AuxiliaryRepositories $auxRep,
         ProgramRepository $program
-    ){
+    ) {
         parent::__construct();
         $this->formRep = $formRep;
         $this->auxRep = $auxRep;
@@ -55,7 +56,7 @@ class FormController extends BasePmController
     public function index()
     {
         //获取参数
-        $filter=[];
+        $filter = [];
         $filter = ['parent_id' => 0];
         $filter['title'] = request()->get('title', '');
 
@@ -66,14 +67,16 @@ class FormController extends BasePmController
             $data['list'] = $list;
             $data['filter'] = $filter;
         } catch (\Exception $e) {
-            Log::info('[FormController] index error', [
-                'messages' => $e->getMessage(),
-                'code' => $e->getCode(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]);
+            Log::info(
+                '[FormController] index error',
+                [
+                    'messages' => $e->getMessage(),
+                    'code' => $e->getCode(),
+                    'file' => $e->getFile(),
+                    'line' => $e->getLine(),
+                ]
+            );
         }
-
         return view('pm.form.index', $data);
     }
 
@@ -90,13 +93,13 @@ class FormController extends BasePmController
         $form = [];
         $formId = request()->get('form_id');
         if (!empty($formId)) {
-            $form = $this->formRep->getFormDetails(['id'=>$formId]);
+            $form = $this->formRep->getFormDetails(['id' => $formId]);
         }
 
         $data = [
-            'master_form_select' =>$masterFormSelect,
-            'program_info' =>$programInfo,
-            'form'=>$form
+            'master_form_select' => $masterFormSelect,
+            'program_info' => $programInfo,
+            'form' => $form
         ];
 
         return view('pm.form.edit', $data);
@@ -108,36 +111,46 @@ class FormController extends BasePmController
     public function ajaxGetProgramCircleId()
     {
         //接收参数
-        $programId = request()->get('program_id',0);
+        $programId = request()->get('program_id', 0);
         if (empty($programId)) {
-            return response()->json([
-                'code'=>400,
-                'data'=>[],
-                'messages'=>Tips::PARAM_ERR.':program_id'
-            ]);
+            return response()->json(
+                [
+                    'code' => 400,
+                    'data' => [],
+                    'messages' => Tips::PARAM_ERR.':program_id'
+                ]
+            );
         }
-        try{
+        try {
             $ret = $this->program->getCurrentCircle($programId);
-            return response()->json([
-                'code'=>200,
-                'data'=>$ret,
-                'messages'=>Tips::AJAX_SUCCESS
-            ]);
+            return response()->json(
+                [
+                    'code' => 200,
+                    'data' => $ret,
+                    'messages' => Tips::AJAX_SUCCESS
+                ]
+            );
         } catch (OpmfException $e) {
             $messages = $e->getMessage();
-            Log::warning('[Pm FormController] ajaxGetProgramCircleId warning', [
-                'messages' => $messages,
-                'code' => $e->getCode(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]);
-            return response()->json([
-                'code'=>400,
-                'data'=>[],
-                'messages'=>$messages
-            ]);
+            Log::warning(
+                '[Pm FormController] ajaxGetProgramCircleId warning',
+                [
+                    'messages' => $messages,
+                    'code' => $e->getCode(),
+                    'file' => $e->getFile(),
+                    'line' => $e->getLine(),
+                ]
+            );
+            return response()->json(
+                [
+                    'code' => 400,
+                    'data' => [],
+                    'messages' => $messages
+                ]
+            );
         }
     }
+
     /**
      * 保存
      */
@@ -165,12 +178,15 @@ class FormController extends BasePmController
             return redirect('/form');
         } catch (OpmfException $e) {
             $messages = $e->getMessage();
-            Log::warning('[Pm UserController] doLogin warning', [
-                'messages' => $messages,
-                'code' => $e->getCode(),
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-            ]);
+            Log::warning(
+                '[Pm UserController] doLogin warning',
+                [
+                    'messages' => $messages,
+                    'code' => $e->getCode(),
+                    'file' => $e->getFile(),
+                    'line' => $e->getLine(),
+                ]
+            );
             session()->put('error', $errorMsg);
             return redirect($this->ref);
         }
@@ -179,9 +195,11 @@ class FormController extends BasePmController
     /**
      * 表单预览
      */
-    public  function preview ()
+    public function preview()
     {
+        $data = [];
 
+        $variable = $foo ? 'foo' : 'bar';
+        return view('pm.form.preview', $data);
     }
-
 }

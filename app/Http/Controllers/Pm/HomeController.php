@@ -30,5 +30,4 @@ class HomeController extends BasePmController
     {
         return view('pm.home.index', []);
     }
-
 }

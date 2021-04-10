@@ -41,7 +41,7 @@ class UserController extends BasePmController
             return redirect('/');
         }
         return view("pm.user.login", [
-            'ref'=>request()->get('ref','/')
+            'ref'=>request()->get('ref', '/')
         ]);
     }
 
@@ -76,7 +76,7 @@ class UserController extends BasePmController
         //校验用户名和密码
         try {
             $this->usersRep->doLoginRep($param);
-            $ref = request()->get('ref','/');
+            $ref = request()->get('ref', '/');
             return redirect($ref);
         } catch (OpmfException $e) {
             $messages = $e->getMessage();
@@ -108,12 +108,10 @@ class UserController extends BasePmController
      */
     public function pwd()
     {
-
     }
 
     public function pwdSave()
     {
-
     }
 
     /**
@@ -126,5 +124,4 @@ class UserController extends BasePmController
         //跳转到登录页
         return redirect('/login');
     }
-
 }

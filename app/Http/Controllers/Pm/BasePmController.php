@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ==============================================
  * 管理端 Base
@@ -11,6 +12,7 @@
  * @version：   v1.0.0
  * @date:       2021-02-24 21:20
  */
+
 namespace App\Http\Controllers\Pm;
 
 use App\Http\Controllers\Controller;
@@ -24,5 +26,4 @@ class BasePmController extends Controller
     {
         $this->ref = Request()->server('HTTP_REFERER');
     }
-
 }

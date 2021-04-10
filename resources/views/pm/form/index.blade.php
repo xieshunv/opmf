@@ -53,7 +53,7 @@
                                 <th class="text-center">项目期</th>
                                 <th class="text-left">模块</th>
                                 <th class="text-left" style="width: 55%;">展示字段</th>
-                                <th class="text-center">操作</th>
+                                <th class="text-left">操作</th>
                             </tr>
                         </thead>
                         @if($list)
