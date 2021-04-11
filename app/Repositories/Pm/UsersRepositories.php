@@ -26,7 +26,7 @@ class UsersRepositories extends BaseRepositories
     /**
      * 密码 secret
      */
-    const SECRET_KEY = '@4!@#$%@';
+    public const SECRET_KEY = '@4!@#$%@';
 
     public function __construct()
     {

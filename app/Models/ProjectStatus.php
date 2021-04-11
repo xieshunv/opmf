@@ -8,11 +8,11 @@ class ProjectStatus extends Model
 {
     protected $table = 'project_status';
 
-    const DRAFT_STATUS = 'draft';
-    const AUDIT_STATUS = 'audit';
-    const ING_STATUS = 'ing';
-    const FINISH_STATUS = 'finish';
-    const FAIL_STATUS = 'fail';
+    public const DRAFT_STATUS = 'draft';
+    public const AUDIT_STATUS = 'audit';
+    public const ING_STATUS = 'ing';
+    public const FINISH_STATUS = 'finish';
+    public const FAIL_STATUS = 'fail';
 
     public function program()
     {

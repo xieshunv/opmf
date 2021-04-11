@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 // 项目周期
 class ProgramCircle extends Model
 {
-    const DISABLED = 0;
-    const ENABLED = 1;
+    public const DISABLED = 0;
+    public const ENABLED = 1;
 
     public $timestamps = false;
 

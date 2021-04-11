@@ -9,9 +9,9 @@ class Program extends Model
 {
     protected $table = 'programs';
 
-    const TEACHER = 700;
+    public const TEACHER = 700;
 
-    const SCHOOL = 600;
+    public const SCHOOL = 600;
 
     public function status()
     {

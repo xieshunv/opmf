@@ -99,7 +99,11 @@ class ItemRepositories extends BaseRepositories
             if (isJson($data['options_list'])) {
                 $item_data['param']['options'] = json_decode($data['options_list'], true);
             } else {
-                $option_values = explode(',', str_replace([' ', '"', '\'', '，', '：'], ['', '', '', ',', ':'], $data['options_list']));
+                $option_values = explode(',', str_replace(
+                    [' ', '"', '\'', '，', '：'],
+                    ['', '', '', ',', ':'],
+                    $data['options_list']
+                ));
                 $item_data['param']['options'] = $option_values;
             }
         }
