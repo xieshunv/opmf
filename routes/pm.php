@@ -41,6 +41,9 @@ Route::middleware(['web', 'check.login'])
         //添加 编辑字段
         $routes->get('/items/edit', 'ItemsController@edit');
         $routes->post('/items/save', 'ItemsController@save');
+
+        //公益项目品牌
+        $routes->get('/program', 'ProgramController@index');
     });
 
 //登陆页面

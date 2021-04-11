@@ -44,7 +44,7 @@ class FormRepositories extends BaseRepositories
             ->when(!empty($map['title']), function ($q) use ($map) {
                 return $q->where('title', 'like', '%' . $map['title'] . '%');
             })
-            ->when(isset($map['program_id']), function ($q) use ($map) {
+            ->when(isset($map['program_id']) && !empty($map['program_id']), function ($q) use ($map) {
                 return $q->where(['module' => 'program', 'module_id' => $map['program_id']]);
             })
             ->orderBy('id', 'desc')

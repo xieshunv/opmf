@@ -26,7 +26,7 @@
             <div class="block block-rounded">
                 <div class="block-content text-center">
                     <p>
-                        You can have a mini Sidebar.
+                        表单预览
                     </p>
                 </div>
             </div>

@@ -20,7 +20,7 @@ class BaseRepositories
     /**
      * 默认分页数
      */
-    const SIZE = 10;
+    public const SIZE = 10;
 
     public function __construct()
     {

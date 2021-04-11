@@ -23,6 +23,7 @@ class AuxiliaryRepositories extends BaseRepositories
 {
     public function __construct()
     {
+        parent::__construct();
     }
 
     /**

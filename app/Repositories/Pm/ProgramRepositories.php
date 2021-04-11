@@ -2,15 +2,15 @@
 
 /**
  * ==============================================
- * Program Repository
+ * 文件描述
  * ----------------------------------------------
- * PHP version 7 灵析-项目管理框架
+ * PHP version 7 灵析
  * ==============================================
  * @category：  PHP
  * @author：    xieshunv <xieshun@lingxi360.cn>
- * @copyright： @2020 http://www.lingxi360.cn/
+ * @copyright： @2021 http://www.lingxi360.cn/
  * @version：   v1.0.0
- * @date:       2021-04-05 9:54
+ * @date:       2021/4/11 10:27 下午
  */
 
 namespace App\Repositories\Pm;
@@ -21,10 +21,26 @@ use App\Models\ProgramCircle;
 use App\Models\ProjectStatus;
 use Carbon\Carbon;
 
-class ProgramRepository extends BaseRepositories
+class ProgramRepositories extends BaseRepositories
 {
     public function __construct()
     {
+    }
+
+    public function getAllProgram($map)
+    {
+        $data = Program::query()
+            ->select('*')
+            ->when(isset($map['parent_id']), function ($q) use ($map) {
+                return $q->where('parent_id', $map['parent_id']);
+            })
+            ->when(isset($map['sort']), function ($q) use ($map) {
+                return $q->orderBy($map['sort'][0], $map['sort'][1]);
+            })
+
+            ->paginate(self::SIZE);
+
+        return $data;
     }
 
     /**
@@ -39,23 +55,6 @@ class ProgramRepository extends BaseRepositories
             ->first();
 
         return $circle ? $circle->toArray() : [];
-    }
-
-
-    public function getAllProgram($map)
-    {
-        $data = Program::query()
-            ->select('*')
-            ->when(isset($map['parent_id']), function ($q) use ($map) {
-                return $q->where('parent_id', $map['parent_id']);
-            })
-            ->when(isset($map['sort']), function ($q) use ($map) {
-                return $q->orderBy($map['sort'][0], $map['sort'][1]);
-            })
-
-            ->paginate(self::PAGE_SIZE);
-
-        return $data;
     }
 
     public function getOneProgram(int $id)
@@ -95,7 +94,7 @@ class ProgramRepository extends BaseRepositories
             ->when(isset($map['sort']), function ($q) use ($map) {
                 return $q->orderBy($map['sort'][0], $map['sort'][1]);
             })
-            ->paginate(self::PAGE_SIZE);
+            ->paginate(self::SIZE);
 
         return $data;
     }
@@ -136,11 +135,11 @@ class ProgramRepository extends BaseRepositories
             }
         }
 
-        list($forms, $items) = $this->formRep->getAllItemsByFormId([
-            'module' => 'program',
-            'module_id' => $programId,
-        ]);
-
+        list($forms, $items) = $this->formRep
+            ->getAllItemsByFormId([
+               'module' => 'program',
+               'module_id' => $programId,
+           ]);
 
         $formsData = $forms->toArray();
         $itemsData = $items->pluck('data')->toArray();

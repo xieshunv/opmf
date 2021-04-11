@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </div>
-                    <table class="table table-vcenter js-table-sections font-size-sm table-hover ">
+                    <table class="table table-vcenter js-table-sections font-size-sm table-hover">
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">#</th>

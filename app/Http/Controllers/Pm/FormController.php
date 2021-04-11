@@ -19,7 +19,7 @@ namespace App\Http\Controllers\Pm;
 
 use App\Repositories\Pm\FormRepositories;
 use App\Repositories\Pm\AuxiliaryRepositories;
-use App\Repositories\Pm\ProgramRepository;
+use App\Repositories\Pm\ProgramRepositories;
 use App\Exceptions\OpmfException;
 use Illuminate\Support\Facades\Log;
 use App\Message\Tips;
@@ -44,7 +44,7 @@ class FormController extends BasePmController
     public function __construct(
         FormRepositories $formRep,
         AuxiliaryRepositories $auxRep,
-        ProgramRepository $program
+        ProgramRepositories $program
     ) {
         parent::__construct();
         $this->formRep = $formRep;
@@ -61,6 +61,7 @@ class FormController extends BasePmController
         $filter = [];
         $filter = ['parent_id' => 0];
         $filter['title'] = request()->get('title', '');
+        $filter['program_id'] = request()->get('program_id', 0);
 
         //获取数据
         $data = [];
@@ -113,7 +114,7 @@ class FormController extends BasePmController
     public function ajaxGetProgramCircleId()
     {
         //接收参数
-        $programId = request()->get('program_id', 0);
+        $programId = (int)request()->get('program_id', 0);
         if (empty($programId)) {
             return response()->json(
                 [
@@ -203,7 +204,6 @@ class FormController extends BasePmController
     {
         $data = [];
 
-        $variable = $foo ? 'foo' : 'bar';
         return view('pm.form.preview', $data);
     }
 }

@@ -69,7 +69,7 @@
             </a>
         </li>
         <li class="nav-main-item">
-            <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="#">
+            <a class="nav-main-link" aria-haspopup="true" aria-expanded="false" href="{{url('/program')}}">
                 <span class="nav-main-link-name">公益品牌</span>
             </a>
         </li>
