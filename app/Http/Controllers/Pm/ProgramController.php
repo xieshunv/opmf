@@ -72,9 +72,9 @@ class ProgramController extends BasePmController
         $all = request()->request->all();
         $ret = $this->programRep->saveProgram($all);
         if (!$ret) {
-            request()->session()->put('error', '信息保存成功');
+            request()->session()->put('error', Tips::SAVE_ERROR);
         } else {
-            request()->session()->put('success', '信息保存成功');
+            request()->session()->put('success', Tips::SAVE_SUCCESS);
         }
 
         return redirect('/program');
