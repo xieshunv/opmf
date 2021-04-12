@@ -14,6 +14,7 @@
     <link rel="shortcut icon" href="{{asset('media/favicons/favicon.png') }}">
     <!-- Stylesheets -->
     <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/dropzone/dist/min/dropzone.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css')}}">
@@ -35,6 +36,15 @@
     <script src="{{asset('/js/laravel.app.js')}}"></script>
 
     <script src="{{asset('/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{asset('/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js')}}"></script>
+
+    <script src="{{asset('/plugins/select2/js/select2.full.min.js')}}"></script>
+
+    {{-- 汉化过的版本--}}
+    <link rel="stylesheet" href="{{asset('/plugins/flatpickr/flatpickr.css')}}">
+    <script src="{{asset('/plugins/flatpickr/flatpickr.js')}}"></script>
+
+
     <script src="{{asset('/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
     <script src="{{asset('/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>

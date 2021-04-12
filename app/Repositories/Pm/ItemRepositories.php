@@ -27,7 +27,7 @@ class ItemRepositories extends BaseRepositories
 
     /**
      * 获取单个item
-     * @param array $map
+     * @param  array  $map
      * @return bool
      */
     public function getOneItem(int $id)
@@ -99,11 +99,14 @@ class ItemRepositories extends BaseRepositories
             if (isJson($data['options_list'])) {
                 $item_data['param']['options'] = json_decode($data['options_list'], true);
             } else {
-                $option_values = explode(',', str_replace(
-                    [' ', '"', '\'', '，', '：'],
-                    ['', '', '', ',', ':'],
-                    $data['options_list']
-                ));
+                $option_values = explode(
+                    ',',
+                    str_replace(
+                        [' ', '"', '\'', '，', '：'],
+                        ['', '', '', ',', ':'],
+                        $data['options_list']
+                    )
+                );
                 $item_data['param']['options'] = $option_values;
             }
         }
@@ -111,7 +114,14 @@ class ItemRepositories extends BaseRepositories
         if ($type == 'group') {
             $goptions = [];
             if ($data['group_fixed_first_columns']) {
-                $item_data['group']['fixed_first_columns'] = explode(',', str_replace([' ', '"', '\'', '，'], ['', '', '', ','], $data['group_fixed_first_columns']));
+                $item_data['group']['fixed_first_columns'] = explode(
+                    ',',
+                    str_replace(
+                        [' ', '"', '\'', '，'],
+                        ['', '', '', ','],
+                        $data['group_fixed_first_columns']
+                    )
+                );
                 $goptions[] = ['key' => '_first_', 'display' => '', 'type' => 'static', 'class' => 'col-2'];
             }
 
@@ -124,11 +134,18 @@ class ItemRepositories extends BaseRepositories
                     'key' => $keys[$i],
                     'display' => $data['group_options_group_display'][$i],
                     'type' => $data['group_options_group_type'][$i],
-                    'class' => $data['group_options_group_class'][$i] ? $data['group_options_group_class'][$i] : 'col-2',
+                    'class' => $data['group_options_group_class'][$i] ?? 'col-2',
                 ];
 
                 if ($op['type'] == 'select') {
-                    $op['options'] = explode(',', str_replace([' ', '"', '\'', '，'], ['', '', '', ','], $data['group_options_group_options'][$i]));
+                    $op['options'] = explode(
+                        ',',
+                        str_replace(
+                            [' ', '"', '\'', '，'],
+                            ['', '', '', ','],
+                            $data['group_options_group_options'][$i]
+                        )
+                    );
                 }
 
                 $goptions[] = $op;
@@ -170,7 +187,7 @@ class ItemRepositories extends BaseRepositories
 
     /**
      * 删除单个item
-     * @param array $map
+     * @param  array  $map
      * @return bool
      */
     public function deleteOneItem(array $map = []): bool

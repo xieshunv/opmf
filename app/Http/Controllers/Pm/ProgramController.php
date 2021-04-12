@@ -19,6 +19,7 @@ namespace App\Http\Controllers\Pm;
 
 use App\Http\Controllers\Pm\BasePmController;
 use App\Repositories\Pm\ProgramRepositories;
+use App\Message\Tips;
 
 class ProgramController extends BasePmController
 {
@@ -41,5 +42,41 @@ class ProgramController extends BasePmController
         ];
 
         return view('pm.program.index', $data);
+    }
+
+    /**
+     * 编辑
+     */
+    public function edit()
+    {
+        $data = [];
+        //获取参数
+        $id = (int)request()->get('id', 0);
+        if ($id) {
+            $data = $this->programRep->getOneProgram($id);
+        }
+
+        return view(
+            "pm.program.edit",
+            [
+                'data' => $data,
+            ]
+        );
+    }
+
+    /**
+     * 保存
+     */
+    public function save()
+    {
+        $all = request()->request->all();
+        $ret = $this->programRep->saveProgram($all);
+        if (!$ret) {
+            request()->session()->put('error', '信息保存成功');
+        } else {
+            request()->session()->put('success', '信息保存成功');
+        }
+
+        return redirect('/program');
     }
 }
