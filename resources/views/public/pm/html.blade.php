@@ -44,7 +44,6 @@
     <link rel="stylesheet" href="{{asset('/plugins/flatpickr/flatpickr.css')}}">
     <script src="{{asset('/plugins/flatpickr/flatpickr.js')}}"></script>
 
-
     <script src="{{asset('/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js')}}"></script>
     <script src="{{asset('/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>

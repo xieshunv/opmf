@@ -20,6 +20,7 @@ namespace App\Http\Controllers\Pm;
 use App\Repositories\Pm\FormRepositories;
 use App\Repositories\Pm\AuxiliaryRepositories;
 use App\Repositories\Pm\ProgramRepositories;
+use App\Models\ProgramCircle;
 use App\Exceptions\OpmfException;
 use Illuminate\Support\Facades\Log;
 use App\Message\Tips;
@@ -126,7 +127,11 @@ class FormController extends BasePmController
         }
 
         try {
-            $ret = $this->program->getCurrentCircle($programId);
+            $map = [
+                'program_id' => $programId,
+                'is_enabled' => ProgramCircle::ENABLED
+            ];
+            $ret = $this->program->getCurrentCircle($map);
             return response()->json(
                 [
                     'code' => 200,

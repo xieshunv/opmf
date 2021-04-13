@@ -79,4 +79,57 @@ class ProgramController extends BasePmController
 
         return redirect('/program');
     }
+
+    /**
+     * 项目期
+     */
+    public function circle()
+    {
+        $programId = (int)request()->get('program_id', 0);
+        $filter = [];
+        $filter['program_id'] = $programId;
+
+        //获取数据
+        $programData = $this->programRep->getAllStage($filter);
+        $data['list'] = $programData;
+
+        $data = [
+            'list' => $programData,
+            'filter' => $filter
+        ];
+        return view("pm.program.circle", $data);
+    }
+
+    public function addCircle()
+    {
+        $id = (int)request()->get('id', '0');
+        $programId = (int)request()->get('program_id', 0);
+
+        $circle = [];
+        if ($id) {
+            $circle = $this->programRep->getCurrentCircle(['id' => $id]);
+        }
+
+        $circle['program_id'] = $programId;
+        $data = [
+            'title' => '项目期管理',
+            'circle' => $circle
+        ];
+
+        $html = view('pm.program.add_circle', $data)->render();
+        return response()->json(['data' => $html]);
+    }
+
+    public function saveCircle()
+    {
+        $data = request()->all();
+
+        $result = $this->programRep->saveStage($data);
+
+        if ($result) {
+            session()->put('success', '信息保存成功');
+        }
+
+        return redirect('/circle?program_id='.$data['program_id']);
+    }
 }

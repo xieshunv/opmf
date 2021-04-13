@@ -1,13 +1,13 @@
-$(function(){
+$(function () {
     //初始化必要的js组件
     Dashmix.helpers([
         'table-tools-checkable',
         'table-tools-sections',
-        'ckeditor5','select2', 'datepicker', 'colorpicker', 'maxlength', 'ckeditor','flatpickr'
+        'ckeditor5', 'select2', 'datepicker', 'colorpicker', 'maxlength', 'ckeditor', 'flatpickr'
     ]);
 
     // Ajaxlink Confirm
-    $('a.ajaxlink').on('click',function(e){
+    $('a.ajaxlink').on('click', function (e) {
         var ask = $(this).attr('ask');
         var url = $(this).attr('url');
         Swal.fire({
@@ -20,11 +20,11 @@ $(function(){
                 cancelButton: "btn btn-secondary font-size-sm m-1"
             },
             confirmButtonText: "确认",
-            cancelButtonText:"取消",
+            cancelButtonText: "取消",
         }).then(function (e) {
             //  e.value ? Swal.fire("Deleted!", "Your imaginary file has been deleted.", "success") : "cancel" === e.dismiss && Swal.fire("Cancelled", "Your imaginary file is safe :)", "error");
             if (e.value) {
-                window.location.href=url;
+                window.location.href = url;
             } else {
                 return false;
             }
@@ -45,42 +45,43 @@ $(function(){
     //Dashmix.helpers(['ckeditor5']);
 
 
-    $('a.ajax-modals').click(function() {
+    $('a.ajax-modals').click(function () {
         var url = $(this).attr('href');
         ajaxGetHtml(url);
         return false;
     });
 
-    window.setTimeout(function(){
+    window.setTimeout(function () {
         $('[data-dismiss="tips"]').alert('close');
-    },2000);
+    }, 2000);
 });
 
-function ajaxGetHtml(url){
+function ajaxGetHtml(url) {
     jQuery.ajax({
         type: 'Get',
         url: url,
         dataType: "json",
         data: {},
         async: false,
-        success: function(ret){
+        success: function (ret) {
             showBox(ret);
         }
     });
 }
-function showBox(ret){
+
+function showBox(ret) {
     $('#modal-block-vcenter').html(ret.data);
     $('#modal-block-vcenter').modal('show');
-    Dashmix.helpers(['ckeditor5','select2', 'datepicker', 'colorpicker', 'maxlength', 'ckeditor','flatpickr']);
+    Dashmix.helpers(['ckeditor5', 'select2', 'datepicker', 'colorpicker', 'maxlength', 'ckeditor', 'flatpickr']);
 }
 
-function submit_form(){
+function submit_form() {
     $("#modal-block-vcenter form:first").submit();
 }
 
 $.ajaxSetup({
-    headers:{
-        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
 

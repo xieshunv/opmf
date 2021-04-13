@@ -31,27 +31,48 @@ class ProgramRepositories extends BaseRepositories
     {
         $data = Program::query()
             ->select('*')
-            ->when(isset($map['parent_id']), function ($q) use ($map) {
-                return $q->where('parent_id', $map['parent_id']);
-            })
-            ->when(isset($map['sort']), function ($q) use ($map) {
-                return $q->orderBy($map['sort'][0], $map['sort'][1]);
-            })
-
+            ->when(
+                isset($map['parent_id']),
+                function ($q) use ($map) {
+                    return $q->where('parent_id', $map['parent_id']);
+                }
+            )
+            ->when(
+                isset($map['sort']),
+                function ($q) use ($map) {
+                    return $q->orderBy($map['sort'][0], $map['sort'][1]);
+                }
+            )
             ->paginate(self::SIZE);
 
         return $data;
     }
 
     /**
-     * @param int $programId
+     * @param  int  $programId
      * @return array
      */
-    public function getCurrentCircle(int $programId)
+    public function getCurrentCircle(array $map)
     {
         $circle = ProgramCircle::query()
-            ->where('program_id', $programId)
-            ->where('is_enabled', ProgramCircle::ENABLED)
+            ->when(
+                isset($map['program_id']),
+                function ($query) use ($map) {
+                    return $query->where('program_id', $map['program_id']);
+                }
+            )
+            ->when(
+                isset($map['is_enabled']),
+                function ($query) use ($map) {
+                    return $query->where('is_enabled', $map['is_enabled']);
+                }
+            )
+            ->when(
+                isset($map['id']),
+                function ($query) use ($map) {
+                    return $query->where('id', $map['id']);
+                }
+            )
             ->first();
 
         return $circle ? $circle->toArray() : [];
@@ -88,12 +109,18 @@ class ProgramRepositories extends BaseRepositories
     {
         $data = ProjectStatus::query()
             ->select('*')
-            ->when(isset($map['program_id']), function ($q) use ($map) {
-                return $q->where('program_id', $map['program_id']);
-            })
-            ->when(isset($map['sort']), function ($q) use ($map) {
-                return $q->orderBy($map['sort'][0], $map['sort'][1]);
-            })
+            ->when(
+                isset($map['program_id']),
+                function ($q) use ($map) {
+                    return $q->where('program_id', $map['program_id']);
+                }
+            )
+            ->when(
+                isset($map['sort']),
+                function ($q) use ($map) {
+                    return $q->orderBy($map['sort'][0], $map['sort'][1]);
+                }
+            )
             ->paginate(self::SIZE);
 
         return $data;
@@ -136,10 +163,12 @@ class ProgramRepositories extends BaseRepositories
         }
 
         list($forms, $items) = $this->formRep
-            ->getAllItemsByFormId([
-               'module' => 'program',
-               'module_id' => $programId,
-           ]);
+            ->getAllItemsByFormId(
+                [
+                    'module' => 'program',
+                    'module_id' => $programId,
+                ]
+            );
 
         $formsData = $forms->toArray();
         $itemsData = $items->pluck('data')->toArray();
@@ -155,7 +184,6 @@ class ProgramRepositories extends BaseRepositories
             'form' => $formsData,
         ];
     }
-
 
 
     public function getExceptDraftProgramStatus($programId)
@@ -175,5 +203,58 @@ class ProgramRepositories extends BaseRepositories
             ->first();
 
         return $status->id;
+    }
+
+    public function getAllStage(array $map = [])
+    {
+        $data = ProgramCircle::query()
+            ->select('*')
+            ->when(
+                isset($map['program_id']) && !empty($map['program_id']),
+                function ($q) use ($map) {
+                    return $q->where('program_id', $map['program_id']);
+                }
+            )
+            ->orderBy('id', 'asc')
+            ->paginate(self::SIZE);
+
+        return $data;
+    }
+
+    public function getOneStage(int $id)
+    {
+        $data = ProgramCircle::query()
+            ->select('*')
+            ->where(['id' => $id])
+            ->first()
+            ->toArray();
+
+        return $data;
+    }
+
+    public function saveStage(array $data)
+    {
+        $id = $data['id'] ?? 0;
+        if (!empty($id)) {
+            if ($data['is_enabled'] == 0) {
+                $ret = ProgramCircle::query()->where(['is_enabled' => 1, 'program_id' => $data['program_id']])->first(
+                )->toArray();
+                if ($ret['id'] == $id) {
+                    return false;
+                }
+            }
+            ProgramCircle::query()->where(['id' => $id])->update($data);
+        } else {
+            $data['create_time'] = date('Y-m-d H:i:s');
+            $id = ProgramCircle::query()->insertGetId($data);
+        }
+
+        //每一个项目，只能有一期(届)有效
+        if ($data['is_enabled'] == 1) {
+            ProgramCircle::query()->where(['program_id' => $data['program_id']])->update(['is_enabled' => 0]);
+            ProgramCircle::query()->where(['id' => $id])->update(['is_enabled' => 1]);
+        }
+
+        return true;
     }
 }

@@ -67,7 +67,7 @@
                                                         <i class="fa fa-file-alt mr-2"></i>表单管理
                                                     </a>
                                                     <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="{{url('/setting/circle?program_id='.$one['id'])}}"  data-toggle="tooltip" title="" data-original-title="项目期">
+                                                    <a class="dropdown-item" href="{{url('/circle?program_id='.$one['id'])}}"  data-toggle="tooltip" data-original-title="项目期">
                                                         <i class="fa fa-calendar-check mr-2"></i>项目期
                                                     </a>
                                                 </div>

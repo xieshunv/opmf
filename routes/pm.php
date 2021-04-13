@@ -42,11 +42,14 @@ Route::middleware(['web', 'check.login'])
             //添加 编辑字段
             $routes->get('/items/edit', 'ItemsController@edit');
             $routes->post('/items/save', 'ItemsController@save');
-
             //公益项目品牌
             $routes->get('/program', 'ProgramController@index');
             $routes->get('/program/edit', 'ProgramController@edit');
             $routes->post('/program/save', 'ProgramController@save');
+            //项目期
+            $routes->get('/circle', 'ProgramController@circle');
+            $routes->get('/program/add_circle', 'ProgramController@addCircle');
+            $routes->post('/program/save_circle', 'ProgramController@saveCircle');
         }
     );
 
