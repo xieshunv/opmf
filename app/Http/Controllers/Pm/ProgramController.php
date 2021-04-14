@@ -130,6 +130,6 @@ class ProgramController extends BasePmController
             session()->put('success', '信息保存成功');
         }
 
-        return redirect('/circle?program_id='.$data['program_id']);
+        return redirect('/circle?program_id=' . $data['program_id']);
     }
 }
