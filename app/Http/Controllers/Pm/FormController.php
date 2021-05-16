@@ -10,7 +10,8 @@
  * @author：    xieshunv <xieshun@lingxi360.cn>
  * @copyright： @2021 http://www.lingxi360.cn/
  * @version：   v1.0.0
- * @date:       2021/4/3 9:42 下午
+ * @date:      2021/4/3 9:42 下午
+ * @link :http://www.lingxi360.cn/
  */
 
 declare(strict_types=1);
@@ -176,6 +177,7 @@ class FormController extends BasePmController
             'title.*' => Tips::FORM_TITLE_EMPTY,
         ];
 
+        $errorMsg = '';
         $checkRet = $this->paramValidate($data, $rules, $messages, $errorMsg);
         if (false === $checkRet) {
             session()->put('error', $errorMsg);
